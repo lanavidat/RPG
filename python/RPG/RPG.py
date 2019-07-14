@@ -1,9 +1,7 @@
 #gamer CLI-RPG
 print("---- Привет искатель приключений. Опасность ждет тебя! Будь осторожен! ----\n")
 
-
-
-
+#Проверка GitHub
 #Харакетеристика героя
 agility = 1
 strenght = 1
@@ -15,6 +13,7 @@ next_lvl = 10
 quantity_mob = 0
 gold = 0
 
+#начисление очков убийства мобов
 def hero_quantity_mob():
 	mobs = quantity_mob
 	mobs_exp = mobs ++ 1
