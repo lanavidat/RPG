@@ -15,9 +15,9 @@ gold = 0
 
 #начисление очков убийства мобов
 def hero_quantity_mob():
-	mobs = quantity_mob
-	mobs_exp = mobs ++ 1
-	print(mobs_exp)
+	global quantity_mob
+	quantity_mob += 1
+	print(quntity_mob)
 
 #характеристики Героя по запросу
 def hero_stat():
