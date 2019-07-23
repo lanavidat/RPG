@@ -14,8 +14,9 @@ import random
 ## Перенос всех фенкций в отдельные файлы
 ## Разобратся, почему не работает относительные пути при чтении файла
 ## создание начисление опыта
-## запись количества убитых мобов в файл
-## вывод к-во убитых мобов из файла
+#+ запись количества убитых мобов в файл
+#+ вывод к-во убитых мобов из файла
+## сделать автообновление количества убитых мобов при каждом запросе списка
 
 #GIT
 ## Разобраться, наконецто с гитом
@@ -35,7 +36,13 @@ luck = 1
 exper = 0
 lvl = 1
 next_lvl = 10
-#quantity_mob = 0
+def quantity_mob()
+    f = open("mob_quantity.txt", "r").read()
+    print(f)
+
+#with open("mob_quantity.txt", "r") as quantity_mob:
+ #   quantity_mob.readline()
+
 gold = 0
 
 #Характеристика моба
@@ -64,16 +71,18 @@ def mob_name():
 #################################################################
 
 ######################## блок изменение счетчика убийства мобов ############
-q_mob = open("mob_quantity.txt", "r").read()
-quantity_mob = int(q_mob)
 
-
-#начисление очков убийства мобов
 def hero_quantity_mob():
-    global quantity_mob
-    quantity_mob += 1
-
-
+    ################ чтение количества уже убитых мобов их файла #####
+    q_mob_read = open("mob_quantity.txt", "r")
+    q_now = q_mob_read.read()
+    plus_one = 1
+    q_now = int(q_now) + int(plus_one)
+    q_mob_read.close()
+    ################ к числу полученного при чтении файла добавлем еденичку #####
+    q_mob_write = open("mob_quantity.txt", "w")
+    q_mob_write.write(str(q_now))
+    q_mob_write.close()
 
 
 #характеристики Героя по запросу
