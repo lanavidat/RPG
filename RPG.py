@@ -1,8 +1,6 @@
 import random
 
-
-
-#gamer CLI-RPG
+# CLI-RPG
 hello_world = " Привет искатель приключений. Опасность ждет тебя! Будь осторожен! "
 print( '\n{0:~^80}\n' .format(hello_world))
 
@@ -19,8 +17,6 @@ def quantity_mob()
     f = open("mob_quantity.txt", "r").read()
     print(f)
 
-#with open("mob_quantity.txt", "r") as quantity_mob:
- #   quantity_mob.readline()
 
 gold = 0
 
@@ -62,7 +58,7 @@ def hero_quantity_mob():
     q_mob_write = open("mob_quantity.txt", "w")
     q_mob_write.write(str(q_now))
     q_mob_write.close()
-
+####################################################################################
 
 #характеристики Героя по запросу
 def hero_stat():
