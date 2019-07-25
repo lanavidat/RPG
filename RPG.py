@@ -13,9 +13,13 @@ luck = 1
 exper = 0
 lvl = 1
 next_lvl = 10
-def quantity_mob()
-    f = open("mob_quantity.txt", "r").read()
-    print(f)
+
+def quantity_mob():
+    q_mob_read = open("mob_quantity.txt", "r")
+    q_now = q_mob_read.read()
+    return q_now
+    q_mob_read.close()
+    
 
 
 gold = 0
@@ -63,7 +67,7 @@ def hero_quantity_mob():
 #характеристики Героя по запросу
 def hero_stat():
     go = " Твои характеристики: "
-    print("{:~^80} \nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: {}\nТекущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: {}\n".format(go, agility, strenght, life,lvl, exper, next_lvl, quantity_mob))
+    print("{:~^80} \nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: {}\nТекущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: {}\n".format(go, agility, strenght, life,lvl, exper, next_lvl, quantity_mob()))
     
     lets_go()
 
