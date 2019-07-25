@@ -1,8 +1,11 @@
 import random
 
 # CLI-RPG
+h = "~"
+print( '\n{0:~^80}' .format(h))
 hello_world = " Привет искатель приключений. Опасность ждет тебя! Будь осторожен! "
-print( '\n{0:~^80}\n' .format(hello_world))
+print( '{0:~^80}' .format(hello_world))
+print( '{0:~^80}\n' .format(h))
 
 
 #Харакетеристика героя
@@ -16,7 +19,7 @@ next_lvl = 10
 
 ######################## считывание к-во убитых мобов с файла ################3
 def quantity_mob():
-    q_mob_read = open("system/mob_quantity.txt", "r")
+    q_mob_read = open("system/hero/mob_quantity.txt", "r")
     q_now = q_mob_read.read()
     return q_now
     q_mob_read.close()
@@ -43,7 +46,7 @@ def mob_name():
 def mob_rend_name():
     global mob_name_h
     ####### Рендомогенератор из файла    
-    mob_name_h = random.choice(open("system/mob_name.txt", "r").read().split('\n'))
+    mob_name_h = random.choice(open("system/hero/mob_name.txt", "r").read().split('\n'))
     return mob_name_h
 #переменная бля вывода случайного имени моба
 def mob_name():
@@ -54,13 +57,13 @@ def mob_name():
 
 def hero_quantity_mob():
     ################ чтение количества уже убитых мобов их файла #####
-    q_mob_read = open("system/mob_quantity.txt", "r")
+    q_mob_read = open("system/hero/mob_quantity.txt", "r")
     q_now = q_mob_read.read()
     plus_one = 1
     q_now = int(q_now) + int(plus_one)
     q_mob_read.close()
     ################ к числу полученного при чтении файла добавлем еденичку #####
-    q_mob_write = open("system/mob_quantity.txt", "w")
+    q_mob_write = open("system/hero/mob_quantity.txt", "w")
     q_mob_write.write(str(q_now))
     q_mob_write.close()
 ####################################################################################
