@@ -1,6 +1,6 @@
 import random
-from hero_char import *
-print(hero_char["next_lvl"])
+#from system.hero.hero_char import *
+#print(hero_char["next_lvl"])
 
 
 # CLI-RPG
@@ -14,51 +14,92 @@ print( '{0:~^80}\n' .format(h))
 
 ######################### Харакетеристика героя ###############################
 #считывание к-во убитых мобов с файла
+
 def quantity_mob():
-    q_mob_read = open("system/hero/mob_quantity.txt", "r")
+    '''q_mob_read = open("system/hero/mob_quantity.txt", "r")
     q_now = q_mob_read.read()
     return q_now
+    q_mob_read.close()'''
+
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["quantity_mob"]
+    return b
     q_mob_read.close()
+
 # уровень героя
 def lvl():
-    global hero_char
-    a = hero_char["lvl"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["lvl"]
+    return b
+    q_mob_read.close()
 # Опыта до следующего уровня для героя
 def next_lvl():
-    global hero_char
-    a = hero_char["next_lvl"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["next_lvl"]
+    return b
+    q_mob_read.close()
 # ловкость
 def agility():
-    global hero_char
-    a = hero_char["agility"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["agility"]
+    return b
+    q_mob_read.close()
 # Сила
 def strenght():
-    global hero_char
-    a = hero_char["strenght"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["strenght"]
+    return b
+    q_mob_read.close()
 # Life
 def life():
-    global hero_char
-    a = hero_char["life"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["life"]
+    return b
+    q_mob_read.close()
 # luck
 def luck():
-    global hero_char
-    a = hero_char["luck"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["luck"]
+    return b
+    q_mob_read.close()
 # текущий опыт
 def exper():
-    global hero_char
-    a = hero_char["exper"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b =a["exper"]
+    return b
+    q_mob_read.close()
 # Gold
 def gold():
-    global hero_char
-    a = hero_char["gold"]
-    return a
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    print (a["gold"])
+    q_mob_read.close()
 ###############################################################################
 
 #Характеристика моба
@@ -89,6 +130,32 @@ def mob_name():
 ######################## блок изменение счетчика убийства мобов ###################
 def hero_quantity_mob():
     # чтение количества уже убитых мобов их файла
+
+    while True:
+
+        #global hero_char
+        #a = hero_char.copy()
+#    b = a["quantity_mob"]
+#    c = b + 1
+        #a["quantity_mob"] += 1
+        q_mob_read = open("system/hero/hero_char.py", "r")
+        b = q_mob_read.readline()
+        #print(type(b))
+        a = eval(b)
+        #print(type(a))
+#    b = a["quantity_mob"]
+#    c = b + 1
+        a["quantity_mob"] += 1
+        #print (a)
+        q_mob_read.close()
+
+        q_mob_write = open("system/hero/hero_char.py", "w")
+        q_mob_write.write(str(a))
+        q_mob_write.close()
+        hero_search()
+
+
+    '''# чтение количества уже убитых мобов их файла
     q_mob_read = open("system/hero/mob_quantity.txt", "r")
     q_now = q_mob_read.read()
     plus_one = 1
@@ -97,7 +164,13 @@ def hero_quantity_mob():
     # к числу полученного при чтении файла добавлем еденичку
     q_mob_write = open("system/hero/mob_quantity.txt", "w")
     q_mob_write.write(str(q_now))
-    q_mob_write.close()
+    q_mob_write.close()'''
+
+    '''
+    q_mob_write = open("system/hero/hero_char", "w")
+    q_mob_write.write(str(q_now))
+    q_mob_write.close()'''
+
 ####################################################################################
 
 #################### характеристики Героя по запросу ###############################
@@ -122,7 +195,8 @@ def hero_mob_attak():
         print("\nТы напал на " + str(mob_name())+"a")
         while mob_life_attak >=0:
             print ("Очки жизни "+ str(mob_name()) + "а : " + str(mob_life_attak))
-            s = hero_char["strenght"]
+            global strenght
+            s = int(strenght())
             mob_life_attak -= s
             if mob_life_attak == 0:
                 print("{0} убит. Больше {0} не будет пугать местных селянок \n".format(mob_name()))
