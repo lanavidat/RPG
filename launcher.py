@@ -1,4 +1,7 @@
 import random
+from hero_char import *
+print(hero_char["next_lvl"])
+
 
 # CLI-RPG
 h = "~"
@@ -9,19 +12,8 @@ print( '{0: ^80}' .format(hello_world))
 print( '{0:~^80}' .format(h))
 print( '{0:~^80}\n' .format(h))
 
-
-#Харакетеристика героя
-agility = 1
-strenght = 1
-life = 10
-luck = 1
-exper = 0
-
-next_lvl = 10
-gold = 0
-
 ######################### Харакетеристика героя ###############################
-#считывание к-во убитых мобов с файла 
+#считывание к-во убитых мобов с файла
 def quantity_mob():
     q_mob_read = open("system/hero/mob_quantity.txt", "r")
     q_now = q_mob_read.read()
@@ -29,15 +21,45 @@ def quantity_mob():
     q_mob_read.close()
 # уровень героя
 def lvl():
-    q_mob_read = open("system/hero/hero_lvl.txt", "r")
-    q_now = q_mob_read.read()
-    return q_now
-    q_mob_read.close()
-
-############################################################################### 
-
-
-
+    global hero_char
+    a = hero_char["lvl"]
+    return a
+# Опыта до следующего уровня для героя
+def next_lvl():
+    global hero_char
+    a = hero_char["next_lvl"]
+    return a
+# ловкость
+def agility():
+    global hero_char
+    a = hero_char["agility"]
+    return a
+# Сила
+def strenght():
+    global hero_char
+    a = hero_char["strenght"]
+    return a
+# Life
+def life():
+    global hero_char
+    a = hero_char["life"]
+    return a
+# luck
+def luck():
+    global hero_char
+    a = hero_char["luck"]
+    return a
+# текущий опыт
+def exper():
+    global hero_char
+    a = hero_char["exper"]
+    return a
+# Gold
+def gold():
+    global hero_char
+    a = hero_char["gold"]
+    return a
+###############################################################################
 
 #Характеристика моба
 mob_agility = 1
@@ -56,12 +78,12 @@ def mob_name():
 #генерация случайного имени моба
 def mob_rend_name():
     global mob_name_h
-    ####### Рендомогенератор из файла    
+    ####### Рендомогенератор из файла
     mob_name_h = random.choice(open("system/hero/mob_name.txt", "r").read().split('\n'))
     return mob_name_h
 #переменная для вывода случайного имени моба
 def mob_name():
-    return mob_name_h 
+    return mob_name_h
 ###################################################################################
 
 ######################## блок изменение счетчика убийства мобов ###################
@@ -72,7 +94,7 @@ def hero_quantity_mob():
     plus_one = 1
     q_now = int(q_now) + int(plus_one)
     q_mob_read.close()
-    # к числу полученного при чтении файла добавлем еденичку 
+    # к числу полученного при чтении файла добавлем еденичку
     q_mob_write = open("system/hero/mob_quantity.txt", "w")
     q_mob_write.write(str(q_now))
     q_mob_write.close()
@@ -81,8 +103,10 @@ def hero_quantity_mob():
 #################### характеристики Героя по запросу ###############################
 def hero_stat():
     go = " Твои характеристики: "
-    print("{:~^80} \nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: {}Текущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: {}\n".format(go, agility, strenght, life,lvl(), exper, next_lvl, quantity_mob()), end="")
-    
+    print("{:~^80} \nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: \
+{}\nТекущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: \
+{}\n".format(go, agility(), strenght(), life(), lvl(), exper(), next_lvl(), quantity_mob()), end="")
+
     lets_go()
 
 ################3 Уклонение от боя с монстром ######################################
@@ -98,7 +122,8 @@ def hero_mob_attak():
         print("\nТы напал на " + str(mob_name())+"a")
         while mob_life_attak >=0:
             print ("Очки жизни "+ str(mob_name()) + "а : " + str(mob_life_attak))
-            mob_life_attak -= strenght
+            s = hero_char["strenght"]
+            mob_life_attak -= s
             if mob_life_attak == 0:
                 print("{0} убит. Больше {0} не будет пугать местных селянок \n".format(mob_name()))
                 hero_quantity_mob()
@@ -122,12 +147,13 @@ def hero_search():
 ########################## Admin PANEL ###########################################
 def admin_panel():
     print("Admin Panel")
-    lets_go()        
+    lets_go()
 
 ############### Инициализация игры, вопрос "куда идем" ###########################
 def lets_go():
     do = " Что будешь делать? "
-    print("{0:~^80} \nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель: 3\nВыйти в консоль: ex".format(do))
+    print("{0:~^80} \nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
+ 3\nВыйти в консоль: ex".format(do))
     else_lets_go = input("\nТвое решение: ")
     print("")
     lets_go_go = str(else_lets_go)
@@ -143,5 +169,5 @@ def lets_go():
         print("Герой в замешательстве вертит головой")
         lets_go()
 
-################# Запуск игры ###################################################  
+################# Запуск игры ###################################################
 lets_go()
