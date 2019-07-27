@@ -21,7 +21,7 @@ def hello():
     os.system('cls||clear')
     line()
     line()
-    hello_world = " Привет искатель приключений. Опасность ждет тебя! Будь осторожен! "
+    hello_world = " Добро пожаловать в Лабиринты. Опасность ждет тебя! Будь осторожен! "
     print( '{0: ^80}' .format(hello_world).upper())
     line()
     line()
@@ -33,8 +33,16 @@ def hello():
     else:
         lets_go()
 
-
-
+####################### Info about GAME ##########################################
+def about_game():
+    os.system('cls||clear')
+    print("Text about Game")
+    i = input()
+    if not i:
+        lets_go()
+    else:
+        lets_go()
+##################################################################################
 
 ######################### Характеристика моба ####################################
 #import from syste/mob/mob_char.py
@@ -77,10 +85,6 @@ def hero_stat():
     else:
         hero_stat()
 
-################3 Уклонение от боя с монстром ######################################
-def uklon ():
-    print("\nГерой уклонился от боя\n")
-
 ###################### Система нападения на монста #################################
 def hero_mob_attak():
     print("Тебе дорогу пересек " + str(mob_rend_name()) + " c " + str(mob_life()) + " очками жизни")
@@ -113,15 +117,6 @@ def hero_search():
     go = " Ты решил прорядить популяцию монстров "
     print("{:~^80}".format(go.upper()))
     hero_mob_attak()
-    #hero_search = input("Поискать нового монстра? y/n: ")
-    #if hero_search == "y":
-    #    hero_mob_attak()
-    #else:
-    #    uklon()
-    #    lets_go()
-
-
-
 
 ############### Инициализация игры, вопрос "куда идем" ###########################
 def lets_go():
@@ -129,7 +124,7 @@ def lets_go():
     line()
     do = " Что будешь делать? "
     print("{0:~^80} \nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
- 3\n-----------------\nВыйти в консоль: 9".format(do.upper()))
+ 3\n-----------------\nВыйти в консоль: 9\nКуда я попал?: 0".format(do.upper()))
     else_lets_go = input("\nТвое решение: ")
     lets_go_go = str(else_lets_go)
     if lets_go_go == "1":
@@ -142,6 +137,9 @@ def lets_go():
         hero_stat()
     elif lets_go_go == "3":
         admin_panel()
+    elif lets_go_go == "0":
+        about_game()
+
     else:
         print("Герой в замешательстве вертит головой\n")
         lets_go()
@@ -156,5 +154,4 @@ hello()
 def exit():
     os.system('cls||clear')
     sys.exit()
-
 ################################################################################

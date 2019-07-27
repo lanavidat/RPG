@@ -19,22 +19,23 @@ def admin_panel():
             import shutil
             shutil.copy('system/hero/hero_char_replace.py', 'system/hero/hero_char.py')
             print("\nСброс завершен...\n")
-            admin_panel()
+            i = input()
+            if not i:
+                admin_panel()
+            else:
+                admin_panel()
         else:
             print("1")
             admin_panel()
     elif go == "2":
-        print("Under construct....")
         admin_panel()
         pass
     elif go == "3":
-        print("Under construct....")
         admin_panel()
         pass
     elif go == "4":
         mob_name_base()
     else:
-        print("Ой, промазал... Осторожно...\n")
         admin_panel()
 
 # Просмотр и изменение базы имен мобов        
@@ -51,10 +52,8 @@ def mob_name_base():
         print("\nТекущие имена мобов в базе:\n" + str(name))
         mob_name_base()
     elif go == "2":
-        print("Under construct....")
         mob_name_base()
     elif go == "3":
-        print("Under construct....")
         mob_name_base()
     elif go == "4":
         from launcher import lets_go
