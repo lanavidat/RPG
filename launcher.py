@@ -47,7 +47,7 @@ def hero_stat():
     go = " Твои характеристики: "
     print("{:~^80} \nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: \
 {}\nТекущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: \
-{}\n".format(go, agility(), strenght(), life(), lvl(), exper(), next_lvl(), quantity_mob()), end=" ")
+{}\n".format(go.upper(), agility(), strenght(), life(), lvl(), exper(), next_lvl(), quantity_mob()), end=" ")
 
     lets_go()
 
@@ -78,7 +78,7 @@ def hero_mob_attak():
 ############################## Запуск сценария атаки ############################
 def hero_search():
     go = " Ты решил прорядить популяцию монстров "
-    print("{:~^80}".format(go))
+    print("{:~^80}".format(go.upper()))
     hero_search = input("Поискать нового монстра? y/n: ")
     if hero_search == "y":
         hero_mob_attak()
@@ -95,7 +95,7 @@ def hero_search():
 def lets_go():
     do = " Что будешь делать? "
     print("{0:~^80} \nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
- 3\n-----------------\nВыйти в консоль: 9".format(do))
+ 3\n-----------------\nВыйти в консоль: 9".format(do.upper()))
     else_lets_go = input("\nТвое решение: ")
     print("")
     lets_go_go = str(else_lets_go)
