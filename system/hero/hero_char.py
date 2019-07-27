@@ -1,1 +1,1 @@
-{'agility': 5, 'strenght': 1, 'life': 10, 'luck': 1, 'exper': 0, 'lvl': 1, 'next_lvl': 10, 'quantity_mob': 5, 'gold': 0}
+{'agility': 5, 'strenght': 1, 'life': 10, 'luck': 1, 'exper': 0, 'lvl': 1, 'next_lvl': 10, 'quantity_mob': 45, 'gold': 0}

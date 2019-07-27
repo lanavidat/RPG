@@ -1,9 +1,14 @@
 
+import os
 def admin_panel():
+    os.system('cls||clear')
+    print( '{0:~^80}' .format("~"))
     do = " ADMIN PANEL "
+    print( '{0:~^80}' .format("~"))
     print("{0:~^80} \nОбнулить характеристики героя: 1\nСброс класса персонажа: 2\nВыбрать нового имени для ГГ: 3\n\
 \nРабота с базой: 4\n\
 ------------------\nВыйти в главное меню: 9\n".format(do))
+
     go = input("Что сделать? ")
     if go == "9":
         from launcher import lets_go
@@ -19,8 +24,12 @@ def admin_panel():
             print("1")
             admin_panel()
     elif go == "2":
+        print("Under construct....")
+        admin_panel()
         pass
     elif go == "3":
+        print("Under construct....")
+        admin_panel()
         pass
     elif go == "4":
         mob_name_base()
@@ -30,6 +39,9 @@ def admin_panel():
 
 # Просмотр и изменение базы имен мобов        
 def mob_name_base():
+    os.system('cls||clear')
+    print( '{0:~^80}' .format("~"))
+    print( '{0:~^80}' .format("~"))
     i = " Работа с базой имен монстров "
     print("{:~^80} \nПосмотреть все доступные имена мобов: 1\nДобавить нового моба: 2\nОткорректировать имеющееся имя: 3\
 \n-------------------\nВыйти в начало игры: 4\nВыйти в Админку: 5".format(i.upper()))

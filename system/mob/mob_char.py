@@ -1,0 +1,1 @@
+{'mob_agility': 5, 'mob_strenght': 1, 'mob_life': 10, 'mob_luck': 1, 'mob_exper': 0, 'mob_lvl': 1, 'mob_gold': 10}
