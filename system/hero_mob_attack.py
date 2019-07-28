@@ -19,15 +19,18 @@ def hero_mob_attack():
         from system.random_mob_hp import mob_hp
         print("\nТы напал на " + str(mob_name())+ "a." + " У него " + str(mob_hp()) + "HP")
         while mob_life_attack >=0:
-            # проверка функции отнятия жизни моба через принт 
-            #print ("Очки жизни "+ str(mob_name()) + "а: " + str(mob_life_attack))
             from system.hero_hit import hero_hit
+            from system.exper import new_exp, exper
+            from system.hero.hero_quantity_mob import hero_quantity_mob
             s = float(hero_hit())
             mob_life_attack -= s
             if mob_life_attack <= 0:
                 print("Ты победил {0}а. \n\nБольше {0} не будет пугать местных селянок!! \n".format(mob_name()))
-                from system.hero.hero_quantity_mob import hero_quantity_mob
+                # зачисление опыта для гг
+                exper()
+                # зачисление еденичку за убийство
                 hero_quantity_mob()
+                # геноцидим дальше?
                 i = input("Продолжаем геноцид? y/n: ")
                 if not i:
                     from system.hero_search import hero_search

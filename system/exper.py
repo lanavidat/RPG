@@ -1,5 +1,25 @@
+import math
 
+exp = 0
 
+def new_exp():
+    return round(exp, 2)
 
 def exper():
-	mob_hp()
+    from system.random_mob_hp import mob_hp, random_mob_hp
+    random_mob_hp()
+    global exp
+    exp = mob_hp()
+    print ("exp " + str(exp))
+    exp /=  15
+    i = round(exp)
+    #return float(i)
+    exper = open("system/hero/hero_char.py", "r")
+    b = exper.readline()
+    a = eval(b)
+    a["exper"] += i
+    exper.close()
+    # запись полученного словаря(полночтью) в файл
+    exper = open("system/hero/hero_char.py", "w")
+    exper.write(str(a))
+    exper.close()
