@@ -9,55 +9,20 @@ from system.hero.mob_name import *
 
 #import MOB info
 from system.mob.mob_info import *
+from system.random_mob_hp import *
 
 # import SYSTEM info
-from admin_panel import admin_panel
-from about_game import about_game
+from system.admin_panel import admin_panel
+from system.about_game import about_game
+from system.hello import *
 
-################################# Рендомный уровень НР моба #######
-mob_hp_now = 0
-# сохранение рендомного значение НР в новую переменную
-def mob_hp():
-    return mob_hp_now
-# генерация уровня НР
-def random_mob_hp():
-    mob_hp_life = mob_life()
-    mob_lvl = 15
-        #max mob life
-    mob_max_hp = int(mob_lvl) * int(mob_hp_life)
-    #print(mob_max_hp)
-        #min mob life
-    mob_min_hp = mob_max_hp % 3
-        #random mob life from min to max
-    global mob_hp_now
-    mob_hp_now = random.randint(mob_min_hp, mob_max_hp)
-    return mob_hp_now
-###########################################################################
+################################# Рендомный уровень НР моба ######################
+# import from system.random_mob_hp.py
+##################################################################################
 
-
-
-
-
-
-# CLI-RPG
-def line():
-    print( '{0:~^80}' .format("~"))
-
-def hello():
-    os.system('cls||clear')
-    line()
-    line()
-    hello_world = " Добро пожаловать в Лабиринты. Опасность ждет тебя! Будь осторожен! "
-    print( '{0: ^80}' .format(hello_world).upper())
-    line()
-    line()
-    print("{: ^80}".format("Начнем изучение нового мира!\n"))
-    a = input()
-    if not a:
-        lets_go()
-    else:
-        lets_go()
-
+######################## Hello ###################################################
+# import from sysytem.hello.py
+##################################################################################
 
 ####################### Info about GAME ##########################################
 # import fropm about_game.py
@@ -109,21 +74,22 @@ def hero_stat():
 ###################### Система нападения на монста #################################
 def hero_mob_attak():
     # приветствие с показание к-во жизни моба
-    print("Тебе дорогу пересек " + str(mob_rand_name()) + " c " + str(random_mob_hp()) + " очками жизни")
+    print("Тебе дорогу пересек " + str(mob_rand_name()))
+    random_mob_hp()
     agr = input("Атаковать? y/n ")
     # пересохранение mob_hp в новую переменную
     mob_life_attak = mob_hp()
 
     #нападение
     if agr =="y" or not agr:
-        print("\nТы напал на " + str(mob_name())+"a")
+        print("\nТы напал на " + str(mob_name())+ "a." + " У него " + str(mob_hp()) + "HP")
         while mob_life_attak >=0:
             #print ("Очки жизни "+ str(mob_name()) + "а: " + str(mob_life_attak))
             global strenght
             s = int(strenght())
             mob_life_attak -= s
             if mob_life_attak == 0:
-                print("     {0} убит. \n\nБольше {0} не будет пугать местных селянок!! \n".format(mob_name()))
+                print("Ты победил {0}а. \n\nБольше {0} не будет пугать местных селянок!! \n".format(mob_name()))
                 hero_quantity_mob()
                 i = input("Продолжаем геноцид? y/n: ")
                 if i == "y" or not i:
@@ -145,13 +111,6 @@ def hero_search():
 
 ############### Инициализация игры, вопрос "куда идем" ###########################
 def lets_go():
-
-        
- 
-
-
-
-    
     os.system('cls||clear')
     line()
     do = " Что будешь делать? "

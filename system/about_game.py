@@ -1,4 +1,5 @@
 import os
+
 def about_game():
     os.system('cls||clear')
     print("\

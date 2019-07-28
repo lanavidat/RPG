@@ -13,13 +13,14 @@ def admin_panel():
     if go == "9":
         from launcher import lets_go
         lets_go()
+        # сброс характеристик героя из файла hero_char
     elif go == "1":
         q = input("Точно сбросить все заслуги ГГ? (y/n): ")
         if q == "y":
             import shutil
             shutil.copy('system/hero/hero_char_replace.py', 'system/hero/hero_char.py')
-            print("\nСброс завершен...\n")
-            i = input()
+            #print("\nСброс завершен...\n")
+            i = input("\nСброс завершен... ")
             if not i:
                 admin_panel()
             else:
@@ -48,9 +49,14 @@ def mob_name_base():
 \n-------------------\nВыйти в начало игры: 4\nВыйти в Админку: 5".format(i.upper()))
     go = input("\nЧто делаем? ")
     if go == "1":
+        os.system('cls||clear')
         name = open("system/hero/mob_names.txt", "r").read()
-        print("\nТекущие имена мобов в базе:\n" + str(name))
-        mob_name_base()
+        print("Текущие имена мобов в базе:\n\n" + str(name))
+        i = input("\nПродолжить... ")
+        if not i:
+            mob_name_base()
+        else:
+            mob_name_base()
     elif go == "2":
         mob_name_base()
     elif go == "3":
