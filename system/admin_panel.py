@@ -37,12 +37,12 @@ def admin_panel():
         admin_panel()
         pass
     elif go == "4":
-        mob_name_base()
+        data_base()
     else:
         admin_panel()
 
 # Просмотр и изменение базы имен мобов        
-def mob_name_base():
+def data_base():
     os.system('cls||clear')
     i = " Работа с базой имен монстров "
 
@@ -58,13 +58,13 @@ def mob_name_base():
         print("Текущие имена мобов в базе:\n\n" + str(name))
         i = input("\nПродолжить... ")
         if not i:
-            mob_name_base()
+            data_base()
         else:
-            mob_name_base()
+            data_base()
     elif go == "2":
-        mob_name_base()
+        data_base()
     elif go == "3":
-        mob_name_base()
+        data_base()
     elif go == "4":
         from system.hero_stat import hero_stat 
         os.system('cls||clear')
@@ -80,21 +80,21 @@ def mob_name_base():
 \n".format("~",hero_hit(), agility(), strenght(), life(), lvl(), exper(), next_lvl(), quantity_mob()), end=" ")
         i = input("\nПродолжим ...")
         if not i:
-            mob_name_base()
+            data_base()
         else:
-            mob_name_base()
+            data_base()
     elif go == "5":
-        mob_name_base()
+        data_base()
     elif go == "6":
-        mob_name_base()
+        data_base()
     elif go == "7":
-        mob_name_base()
+        data_base()
     elif go == "8":
-        mob_name_base()
+        data_base()
     elif go == "0":
         from launcher import lets_go
         lets_go()
     elif go == "9":
         admin_panel()
     else:
-        mob_name_base()
+        data_base()

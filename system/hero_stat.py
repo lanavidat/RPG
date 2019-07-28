@@ -8,7 +8,7 @@ def hero_stat():
     from system.hero_hit import hero_hit
     print( '{0:~^80}'.format("~"))
     print( '{0:~^80}' .format(do.upper()))
-    print("{:~^80} \n\nУрон героя: {}\n\nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: \
+    print("{:~^80} \n\nУрон героя за проход: {}\n\nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: \
 {}\nТекущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: {}\n\
  \
 \n".format("~",hero_hit(), agility(), strenght(), life(), lvl(), exper(), next_lvl(), quantity_mob()), end=" ")
