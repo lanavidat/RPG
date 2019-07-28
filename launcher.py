@@ -12,6 +12,32 @@ from system.mob.mob_info import *
 
 # import SYSTEM info
 from admin_panel import admin_panel
+from about_game import about_game
+
+################################# Рендомный уровень НР моба #######
+mob_hp_now = 0
+# сохранение рендомного значение НР в новую переменную
+def mob_hp():
+    return mob_hp_now
+# генерация уровня НР
+def random_mob_hp():
+    mob_hp_life = mob_life()
+    mob_lvl = 15
+        #max mob life
+    mob_max_hp = int(mob_lvl) * int(mob_hp_life)
+    #print(mob_max_hp)
+        #min mob life
+    mob_min_hp = mob_max_hp % 3
+        #random mob life from min to max
+    global mob_hp_now
+    mob_hp_now = random.randint(mob_min_hp, mob_max_hp)
+    return mob_hp_now
+###########################################################################
+
+
+
+
+
 
 # CLI-RPG
 def line():
@@ -28,20 +54,13 @@ def hello():
     print("{: ^80}".format("Начнем изучение нового мира!\n"))
     a = input()
     if not a:
-
         lets_go()
     else:
         lets_go()
+
 
 ####################### Info about GAME ##########################################
-def about_game():
-    os.system('cls||clear')
-    print("Text about Game")
-    i = input()
-    if not i:
-        lets_go()
-    else:
-        lets_go()
+# import fropm about_game.py
 ##################################################################################
 
 ######################### Характеристика моба ####################################
@@ -85,15 +104,21 @@ def hero_stat():
     else:
         hero_stat()
 
+
+
 ###################### Система нападения на монста #################################
 def hero_mob_attak():
-    print("Тебе дорогу пересек " + str(mob_rend_name()) + " c " + str(mob_life()) + " очками жизни")
+    # приветствие с показание к-во жизни моба
+    print("Тебе дорогу пересек " + str(mob_rand_name()) + " c " + str(random_mob_hp()) + " очками жизни")
     agr = input("Атаковать? y/n ")
-    mob_life_attak = int(mob_life())
+    # пересохранение mob_hp в новую переменную
+    mob_life_attak = mob_hp()
+
+    #нападение
     if agr =="y" or not agr:
         print("\nТы напал на " + str(mob_name())+"a")
         while mob_life_attak >=0:
-            print ("Очки жизни "+ str(mob_name()) + "а: " + str(mob_life_attak))
+            #print ("Очки жизни "+ str(mob_name()) + "а: " + str(mob_life_attak))
             global strenght
             s = int(strenght())
             mob_life_attak -= s
@@ -120,6 +145,13 @@ def hero_search():
 
 ############### Инициализация игры, вопрос "куда идем" ###########################
 def lets_go():
+
+        
+ 
+
+
+
+    
     os.system('cls||clear')
     line()
     do = " Что будешь делать? "
