@@ -1,4 +1,4 @@
-
+# к-во убитых мобов
 def quantity_mob():
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()

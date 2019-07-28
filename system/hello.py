@@ -6,15 +6,17 @@ def line():
 
 def hello():
     os.system('cls||clear')
+    print("\n\n\n")
     line()
     line()
-    hello_world = " Добро пожаловать в Лабиринты. Опасность ждет тебя! Будь осторожен! "
-    print( '{0: ^80}' .format(hello_world).upper())
+    do = " Добро пожаловать в Лабиринты. Опасность ждет тебя! Будь осторожен! "
+    print( '{0:~^80}' .format(do).upper())
     line()
     line()
-    print("{: ^80}".format("Начнем изучение нового мира!\n"))
+    #print
     from launcher import lets_go
-    a = input()
+
+    a = input("{: ^80}".format("Начнем изучение нового мира!"))
     #1from launcher import lets_go
     if not a:
         

@@ -3,78 +3,27 @@ import sys
 import os
 
 # import HERO info
-from system.hero.hero_info import *
-from system.hero.hero_quantity_mob import *
-from system.hero.mob_name import *
+from system.hero.hero_info import *                 # Харакетеристика героя
+from system.hero.hero_quantity_mob import *         # блок изменение счетчика убийства мобов
+from system.hero.mob_name import *                  # Randome name of Monsters
+from system.hero_stat import *                      # Hero stat
+from system.hero_hit import hero_hit                # расчет удара ГГ по мобу
 
 #import MOB info
 from system.mob.mob_info import *
-from system.random_mob_hp import *
+from system.random_mob_hp import *                  # Рендомный уровень НР моба
+#from system.mob_char import *                       # Характеристика моба
 
 # import SYSTEM info
-from system.admin_panel import admin_panel
-from system.about_game import about_game
-from system.hello import *
-
-################################# Рендомный уровень НР моба ######################
-# import from system.random_mob_hp.py
-##################################################################################
-
-######################## Hello ###################################################
-# import from sysytem.hello.py
-##################################################################################
-
-####################### Info about GAME ##########################################
-# import fropm about_game.py
-##################################################################################
-
-######################### Характеристика моба ####################################
-#import from syste/mob/mob_char.py
-##################################################################################
-
-######################### Харакетеристика героя ##################################
-# move to system/hero/hero_info
-##################################################################################
-
-######################## Randome name of Monsters ################################
-# move to system/hero/mob_name
-##################################################################################
-
-######################## Ramdome mobs name #######################################
-# move to system/hero/mob_name import
-##################################################################################
-
-######################## блок изменение счетчика убийства мобов ##################
-# move to system/hero/hero_quantity_mob import
-##################################################################################
-
-#################### характеристики Героя по запросу #############################
-# import from system/hero/....
-##################################################################################
-
-########################## Admin PANEL ###########################################
-# import function from admin_panel.py
-##################################################################################
-
-def hero_stat():
-    os.system('cls||clear')
-    line()
-    go = " Твои характеристики: "
-    print("{:~^80} \nЛовкость: {}\nСила: {}\nУровень жизни: {}\nУровень героя: \
-{}\nТекущий опыт: {}\nОпыт до следующего уровня: {}\nКоличество убитых монстров: \
-{}\n".format(go.upper(), agility(), strenght(), life(), lvl(), exper(), next_lvl(), quantity_mob()), end=" ")
-    a = input("\nИдем дальше...")
-    if a or not a:
-        lets_go()
-    else:
-        hero_stat()
-
+from system.admin_panel import admin_panel          # Admin PANEL
+from system.about_game import about_game            # Info about GAME
+from system.hello import *                          # Hello
 
 
 ###################### Система нападения на монста #################################
 def hero_mob_attak():
     # приветствие с показание к-во жизни моба
-    print("Тебе дорогу пересек " + str(mob_rand_name()))
+    print("\nТебе дорогу пересек " + str(mob_rand_name()))
     random_mob_hp()
     agr = input("Атаковать? y/n ")
     # пересохранение mob_hp в новую переменную
@@ -84,15 +33,18 @@ def hero_mob_attak():
     if agr =="y" or not agr:
         print("\nТы напал на " + str(mob_name())+ "a." + " У него " + str(mob_hp()) + "HP")
         while mob_life_attak >=0:
+            # проверка функции отнятия жизни моба через принт 
             #print ("Очки жизни "+ str(mob_name()) + "а: " + str(mob_life_attak))
-            global strenght
-            s = int(strenght())
+            global hero_hit
+            s = float(hero_hit())
             mob_life_attak -= s
-            if mob_life_attak == 0:
+            if mob_life_attak <= 0:
                 print("Ты победил {0}а. \n\nБольше {0} не будет пугать местных селянок!! \n".format(mob_name()))
                 hero_quantity_mob()
                 i = input("Продолжаем геноцид? y/n: ")
-                if i == "y" or not i:
+                if not i:
+                    hero_search()
+                elif i == "y":
                     hero_search()
                 else:
                     lets_go()
@@ -105,17 +57,27 @@ def hero_mob_attak():
 def hero_search():
     os.system('cls||clear')
     line()
-    go = " Ты решил прорядить популяцию монстров "
-    print("{:~^80}".format(go.upper()))
+    do = " Ты решил прорядить популяцию монстров "
+    print( '{0:~^80}' .format(do.upper()))
+    line()
     hero_mob_attak()
 
 ############### Инициализация игры, вопрос "куда идем" ###########################
 def lets_go():
     os.system('cls||clear')
+
+                            ###### ТЕСТОВЫЙ ПОЛИГОН ######
+
+    
+
+
+
+                            ##############################
     line()
     do = " Что будешь делать? "
-    print("{0:~^80} \nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
- 3\n-----------------\nВыйти в консоль: 9\nКуда я попал?: 0".format(do.upper()))
+    print( '{0:~^80}' .format(do.upper()))
+    print("{0:~^80} \n\nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
+ 3\n-----------------\nВыйти в консоль: 9\nКуда я попал?: 0".format("~"))
     else_lets_go = input("\nТвое решение: ")
     lets_go_go = str(else_lets_go)
     if lets_go_go == "1":
@@ -134,11 +96,12 @@ def lets_go():
     else:
         print("Герой в замешательстве вертит головой\n")
         lets_go()
-
+################################################################################
 
         
 ################# Start Game ###################################################
 hello()
+
 ################################################################################
 
 ############################### EXIT ###########################################         
