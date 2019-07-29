@@ -64,7 +64,7 @@ def exper():
     #print(type(b))
     a = eval(b)
     b =a["exper"]
-    return b
+    return round(b, 2)
     q_mob_read.close()
 # Gold
 def gold():

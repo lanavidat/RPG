@@ -1,6 +1,5 @@
 import os
 
-
 def lets_go():
     os.system('cls||clear')
 

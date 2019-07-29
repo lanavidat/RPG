@@ -25,9 +25,13 @@ def hero_mob_attack():
             s = float(hero_hit())
             mob_life_attack -= s
             if mob_life_attack <= 0:
-                print("Ты победил {0}а. \n\nБольше {0} не будет пугать местных селянок!! \n".format(mob_name()))
+
+
+                print("Ты победил {0}а. \n\nБольше {0} не будет пугать местных селянок!!".format(mob_name()))
+                print("Победа над {0}ом принесло герою опыт в размере - {1} ед.\n".format(mob_name(), float(exper())))
                 # зачисление опыта для гг
-                exper()
+                #exper()
+                
                 # зачисление еденичку за убийство
                 hero_quantity_mob()
                 # геноцидим дальше?
