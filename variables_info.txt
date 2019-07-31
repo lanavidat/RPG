@@ -81,3 +81,16 @@ system.about_game
 system.exper
 *	new_exp()	*
 *	exper()
+
+system.hero.hero_name_class				--	содержит информацию про имя и класс гг. позволяет менять имя\класс
+*	hero_name
+*	hero_class
+*	change_hero_name
+*	change_hero_class
+
+system.hero.about_hero					-- словарь, с которого берется информация про гг для hero_name_class
+*	{hero_name}				*
+*	{hero_calss_warrior}
+*	{hero_calss_hunter}
+*	{hero_calss_mage}
+*	{hero_class}			*

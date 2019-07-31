@@ -9,9 +9,12 @@ def lets_go():
 
                             ##############################
     from system.hello import line
+    from system.hero.hero_name_class import hero_name
+    h = hero_name()    
+    do = " Приветствуем, " + str(h) + "! Что будешь делать? "   
     line()
-    do = " Что будешь делать? "
-    print( '{0:~^80}' .format(do.upper()))
+
+    print( '{0:~^80}'.format(do.upper()))
     print("{0:~^80} \n\nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
  3\n-----------------\nВыйти в консоль: 9\nКуда я попал?: 0".format("~"))
     else_lets_go = input("\nТвое решение: ")
