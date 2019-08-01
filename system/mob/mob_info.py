@@ -44,3 +44,13 @@ def mob_gold():
     b = a["mob_gold"]
     return b
     q_mob_read.close()
+
+ #mob_lvl   
+def mob_lvl():
+    q_mob_read = open("system/mob/mob_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["mob_lvl"]
+    return b
+    q_mob_read.close()    

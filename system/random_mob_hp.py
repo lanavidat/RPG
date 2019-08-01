@@ -13,9 +13,10 @@ def mob_hp():
 # генерация уровня НР
 def random_mob_hp():
     mob_hp_life = mob_life()
-    mob_lvl = 15
+    mob_lv = mob_lvl()
+
         #max mob life
-    mob_max_hp = int(mob_lvl) * int(mob_hp_life)
+    mob_max_hp = int(mob_lv) * int(mob_hp_life)
     #print(mob_max_hp)
         #min mob life
     mob_min_hp = mob_max_hp % 3

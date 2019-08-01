@@ -1,13 +1,14 @@
 import os
 
 def lets_go():
-    os.system('cls||clear')
+                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
 
-                            ###### ТЕСТОВЫЙ ПОЛИГОН ######
+
 
 
 
                             ##############################
+    os.system('cls||clear')
     from system.hello import line
     from system.hero.hero_name_class import hero_name
     h = hero_name()    

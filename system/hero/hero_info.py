@@ -75,3 +75,14 @@ def gold():
     b = a["gold"]
     return b
     q_mob_read.close()
+
+# hero_died
+def hero_died():
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    #print(type(b))
+    a = eval(b)
+    b = a["hero_died"]
+    return b
+    q_mob_read.close()
+
