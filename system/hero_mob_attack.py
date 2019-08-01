@@ -2,7 +2,7 @@
 import random
 
 def hero_mob_attack():
-    from system.hero_hit import hero_hit
+    from system.hero_hit import hero_hit, max_hero_hit
     from system.exper import new_exp, exper
     from system.hero.hero_quantity_mob import hero_quantity_mob
     from system.hero.hero_quantity_died import hero_quantity_died
@@ -22,26 +22,31 @@ def hero_mob_attack():
     def combat():
         global mob_life_attack
         global hero_life
-
-        hero_hits = float(hero_hit())
-        print("Сила удара героя: " + str(hero_hits))
+        global max_hero_hits
+        max_hit = max_hero_hit()
+        
+        #hero_hits = round(hero_hit(), 2)
+        print("Максимальный урон героя: " + str(max_hit) + "HP")
         hero_life = float(life())
-        print("Очки героя " + str(hero_life))
+        print("Уровень жизни героя " + str(hero_life))
         mob_life_attack = float(mob_hp())
-        print("Очки жизни " + str(mob_name()) + "a: " + str(mob_life_attack) + "\n")
+        print("Уровень жизни " + str(mob_name()) + "a: " + str(mob_life_attack) + "\n")
 
         while True:
+            hero_hits = round(hero_hit(), 2)
             from system.hero_search import hero_search
             hero_random = random.random()
             #print ("hero random " + str(hero_random))
             mob_random = random.random()
             #print ("mobs random " + str(mob_random))
-
+            
             if hero_random >= mob_random:
+
+                         
                 mob_life_attack -= hero_hits
                 int_mob_life = round(mob_life_attack, 2)
                     
-                print("Судьба отдала ход Герою. У Моба осталось жзни: " + str(int_mob_life))
+                print("Герой лупит со всей силы, на " + str(hero_hits) + "НР. В " +str(mob_name()) + "a осталось " + str(int_mob_life) + "HP")
                 
                 if int_mob_life <= 0:
                     i = "\nТы победил "
@@ -67,7 +72,7 @@ def hero_mob_attack():
                 hero_life -= 1
                 int_hero_life = round(hero_life, 2)
                 
-                print(" " + str(mob_name()) + " ударил героя. Жизнь героя:  " + str(int_hero_life))
+                print("     " + str(mob_name()) + " ударил героя. Жизнь героя:  " + str(int_hero_life) + "HP")
                 #combat()
                 if int_hero_life <= 0:
                     print("\nГерой погиб не выдержав побоев.\n".upper())

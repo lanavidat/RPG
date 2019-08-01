@@ -16,10 +16,10 @@ def random_mob_hp():
     mob_lv = mob_lvl()
 
         #max mob life
-    mob_max_hp = int(mob_lv) * int(mob_hp_life)
+    mob_max_hp = (int(mob_lv) * int(mob_hp_life)) + 10
     #print(mob_max_hp)
         #min mob life
-    mob_min_hp = mob_max_hp % 3
+    mob_min_hp = (mob_max_hp % 3) + 1
         #random mob life from min to max
     global mob_hp_now
     mob_hp_now = random.randint(mob_min_hp, mob_max_hp)
