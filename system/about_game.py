@@ -6,7 +6,7 @@ def about_game():
     	\
     	\
     	\
-    	Text about Game\
+    	\n\n\n\n\n\n\nText about Game\
     	\
     	\
     	\

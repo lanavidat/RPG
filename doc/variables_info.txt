@@ -2,15 +2,15 @@ system.hero_search
 *	hero_search()
 
 system.hello
-*	line()
-*	hello()	
+*	line()					*
+*	hello()
 
 system.hero_hit
 *	hero_hit()
-*	max_hero_hit	*
+*	max_hero_hit			*
 
 system.hero_mob_attack
-*	hero_mob_attack()
+*	hero_mob_attack()		*
 
 system.hero_stat
 *	hero_stat()
@@ -80,11 +80,11 @@ system.about_game
 *	about_game()
 
 system.exper
-*	new_exp()	*
+*	new_exp()				*
 *	exper()
 
 system.hero.hero_name_class				--	содержит информацию про имя и класс гг. позволяет менять имя\класс
-*	hero_name
+*	hero_name 				*
 *	hero_class
 *	change_hero_name
 *	change_hero_class
@@ -95,3 +95,6 @@ system.hero.about_hero					-- словарь, с которого берется
 *	{hero_calss_hunter}
 *	{hero_calss_mage}
 *	{hero_class}			*
+
+system.hero_next_lvl					-- расчет опыта для следеющего уровня героя
+*	hero_next_lvl 			*

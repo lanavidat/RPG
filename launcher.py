@@ -1,7 +1,6 @@
 # import Python modules
-import random
-import sys
-import os
+#import random
+#import os
 
 # import HERO module
 from system.hero.hero_info import *                 # Харакетеристика героя
@@ -26,10 +25,4 @@ from system.lets_go import *                        # lets_go-go-go-go-oooooo!!!
 ################# Start Game ###################################################
 hello()
 
-################################################################################
-
-############################### EXIT GAME ######################################         
-def exit():
-    os.system('cls||clear')
-    sys.exit()
 ################################################################################

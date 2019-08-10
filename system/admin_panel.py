@@ -1,5 +1,5 @@
-
 import os
+
 def admin_panel():
     #админ меню
     os.system('cls||clear')
@@ -15,7 +15,8 @@ def admin_panel():
     if go == "9":
         from launcher import lets_go
         lets_go()
-        # сброс характеристик героя из файла hero_char
+
+    # сброс характеристик героя из файла hero_char
     elif go == "1":
         q = input("Точно сбросить все заслуги ГГ? (y/n): ")
         if q == "y":
@@ -30,12 +31,33 @@ def admin_panel():
         else:
             print("1")
             admin_panel()
+
+    
     elif go == "2":
         admin_panel()
         pass
+
+    #Change Hero name    
     elif go == "3":
-        admin_panel()
-        pass
+        new_name = input("Новое имя героя: ")
+        show_name = open("system/hero/about_hero.py", "r")
+        b = show_name.readline()
+        a = eval(b)
+        #print (a)
+        a["hero_name"] = new_name
+        #print(a["hero_name"])
+        show_name.close()
+        # запись полученного словаря(полночтью) в файл
+        name_write = open("system/hero/about_hero.py", "w")
+        name_write.write(str(a))
+        name_write.close()
+        #print("Имя героя изменено, теперь тебя зовут " + str(new_name))
+        next = input("Имя героя изменено, теперь тебя зовут " + str(new_name.title()))
+        if not next:
+            admin_panel()
+        else:
+            admin_panel()   
+
     elif go == "4":
         data_base()
     else:
