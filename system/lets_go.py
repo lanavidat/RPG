@@ -26,7 +26,7 @@ def lets_go():
     from system.hero_stat import hero_stat
     from system.admin_panel import admin_panel
 
-    print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
+    #print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
    
 
 

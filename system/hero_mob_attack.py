@@ -107,13 +107,13 @@ def hero_mob_attack():
                         hero_hits = round(hero_hits, 2)
                         mob_life_attack -= hero_hits
                         int_mob_life = round(mob_life_attack, 2)
-                        print(str(sw) + " Тебе улыбнулись сами боги! " + str(h) + " лупит со всей силы, на " + str(hero_hits) + "НР. В " +str(mob_name()) + "a осталось " + str(int_mob_life) + "HP")
+                        print(str(sw) + " Тебе улыбнулись сами боги! " + str(h.title()) + " лупит со всей силы, на " + str(hero_hits) + "НР. В " +str(mob_name().title()) + "a осталось " + str(int_mob_life) + "HP")
                         time.sleep(5)
     # обычный удар героя
                     else:
                         mob_life_attack -= hero_hits
                         int_mob_life = round(mob_life_attack, 2)
-                        print(str(sw) +" " + str(h) + " бъет на " + str(hero_hits) + "НР. В " +str(mob_name()) + "a осталось " + str(int_mob_life) + "HP")
+                        print(str(sw) +" " + str(h.title()) + " бъет на " + str(hero_hits) + "НР. В " +str(mob_name().title()) + "a осталось " + str(int_mob_life) + "HP")
 
     # проверка на смерть моба и выдача плюшек
                     if int_mob_life <= 0:
@@ -121,19 +121,15 @@ def hero_mob_attack():
                         
                         line()
                         new_exp()
-                        i = "\n" + str(h) + " победил "
-                        print(str(i.upper()) + "{0}A.".format(mob_name().upper(), mob_name()))
+                        i = "\n" + str(h.title()) + " победил "
+                        print(str(i.upper()) + "{0}A.".format(mob_name().upper(), mob_name().title()))
                         print("Получено: Опыт - {} ед.\n".format(float(exper())))
-
-
 
     # зачисление еденичку за убийство
                         hero_quantity_mob()
 
     #проверка уровня
-                        
                         hero_next_lvl()
-
 
     # запрос на новый бой
 
@@ -153,23 +149,14 @@ def hero_mob_attack():
                                 s = input("")
                             except TimeoutError:
                                 hero_search()
-                                #return "Timeout"
                             finally:
 
                                 signal.alarm(0)
-                                #lets_go()
                             return s
-                        #input_timer() 
                         print("Ищем нового противника... Для остановки нажми эникей")
                         input_timer(" ", 5)
                         lets_go()
-                       # i = input("Продолжаем геноцид? (Поиск моба - Enter. Главное меню - 9): ")
-                                                
-                        #if i == "9":
-                         #   lets_go()
-                         
-                        #else:
-                         #   hero_search()
+
                          
     #  проверка на инициативу моба
                 if hero_random <= mob_random:
@@ -181,7 +168,7 @@ def hero_mob_attack():
                     int_hero_life = round(hero_life, 2)
 
     # сообщение про удар моба
-                    print(str(sw) + " "+ str(mob_name()) + " кусает " + "героя"+ " на " + str(mob_hits) + "HP. Жизненых сил героя осталось всего " + str(int_hero_life) + "HP")
+                    print(str(sw) + " "+ str(mob_name().title()) + " кусает " + "героя"+ " на " + str(mob_hits) + "HP. Жизненых сил героя осталось всего " + str(int_hero_life) + "HP")
                     
     # проверка на смерть героя
                     if int_hero_life <= 0:
@@ -208,40 +195,15 @@ def hero_mob_attack():
                                 s = input("")
                             except TimeoutError:
                                 hero_search()
-                                #return "Timeout"
                             finally:
 
                                 signal.alarm(0)
-                                #lets_go()
                             return s
-                        #input_timer() 
+                        
                         print("Ищем нового противника... Для остановки нажми эникей")
                         input_timer(" ", 2)
 
                         lets_go()
-                        
-                        #import time
-                        #from threading import Thread
 
-
-    # проверка на новую попытку напасть
-                        #t = time.sleep(4)
-                        #print(t -1)
-                        #while True:
-                         #   start = time.time()
-#                            answer = int(input("Попытать счастье еще раз? (Поиск моба - Enter. Главное меню - 9): "))
-#
- #                           if time.time() - start >= 1:
-  #                              hero_search()
-   #                             #hero_search()
-    #                        else:
-     #                           if i == 9:
-      #                              lets_go()
-       #                         else:
-        #                            hero_search()
-                                #time.sleep(3)
-                                #hero_search()
-                                #lets_go()
-                         
 
         combat()
