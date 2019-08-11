@@ -18,9 +18,6 @@ def hello():
 
     a = input("{: ^80}".format("Начнем изучение нового мира!"))
     #1from launcher import lets_go
-    if not a:
-        from launcher import lets_go
-        lets_go()
-    else:
+    if a or not a:
         from launcher import lets_go
         lets_go()

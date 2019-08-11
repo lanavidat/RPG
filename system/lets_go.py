@@ -32,7 +32,9 @@ def lets_go():
 
     #print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
    
-
+    from system.hero_mob_attack import luck_now as lc
+    lc = lc()
+    print (lc) 
 
 
 

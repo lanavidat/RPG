@@ -1,1 +1,1 @@
-{'hero_name': 'Дима', 'hero_calss_warrior': 'warrior', 'hero_calss_hunter': 'hunter', 'hero_calss_mage': 'mage', 'hero_class': 'warrior'}
+{'hero_name': 'Странник', 'hero_calss_warrior': 'warrior', 'hero_calss_hunter': 'hunter', 'hero_calss_mage': 'mage', 'hero_class': 'warrior'}

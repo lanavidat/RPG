@@ -1,6 +1,3 @@
-system.hero_search
-*	hero_search()
-
 system.hello
 *	line()					*
 *	hello()
@@ -10,7 +7,8 @@ system.hero_hit
 *	max_hero_hit			*
 
 system.hero_mob_attack
-*	hero_mob_attack()		*
+*	hero_mob_attack()		*			--- начало боя
+*	luck_now 							--- проверка на удачу 
 
 system.hero_stat
 *	hero_stat()
