@@ -12,29 +12,23 @@ def hero_search():
     os.system('cls||clear')
     from system.hello import line
     from system.hero_hit import max_hero_hit
-    from system.hero.hero_info import agility, strenght, life, lvl, exper, next_lvl
-    from system.hero.hero_info import hero_name
-    h = hero_name()  
-   
-    line()
-    do = " " + str(h) + " решил прорядить популяцию монстров "
-    char = " Hit: < {}hp, ag: {} str: {}, life: {}НР, lvl: {}, exp: {}/{} " .format(max_hero_hit(), agility(), strenght(), life(), lvl(), exper(), next_lvl())
-
-
-    print( '{0:~^80}' .format(do.upper()))
-    print('{:~^80}'.format(char.upper()))
+    from system.hero.hero_info import agility, strenght, life, lvl, exper, next_lvl, hero_name
+    #from system.hero.hero_info import hero_name
     #line()
     from system.hero_mob_attack import hero_mob_attack
     hero_mob_attack()    
 
 def lets_go():
     os.system('cls||clear')
+    from system.hello import line
+    from system.hero.hero_info import hero_name
+    from system.about_game import about_game
+    from system.hero_stat import hero_stat
+    from system.admin_panel import admin_panel
 
-    #print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
+    print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
    
-    from system.hero_mob_attack import luck_now as lc
-    lc = lc()
-    print (lc) 
+
 
 
 
@@ -44,8 +38,7 @@ def lets_go():
     #print("\n\n\n##### TEST #####\n\n\n")   
                             ##############################
 
-    from system.hello import line
-    from system.hero.hero_info import hero_name
+
     h = hero_name()    
     do = " Приветствуем, " + str(h) + "! Что будешь делать? "   
     line()
@@ -61,14 +54,14 @@ def lets_go():
         os.system('cls||clear')
         exit()
     elif lets_go_go == "2":
-        from system.hero_stat import hero_stat
+
         hero_stat()
 
     elif lets_go_go == "3":
-        from system.admin_panel import admin_panel
+
         admin_panel()
     elif lets_go_go == "0":
-        from system.about_game import about_game
+        
         about_game()
 
     else:
