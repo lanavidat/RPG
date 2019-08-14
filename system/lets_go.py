@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 
 def exit():
     os.system('cls||clear')
@@ -29,9 +30,9 @@ def lets_go():
     #print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
    
 
+    
 
-
-
+    
 
 
 
@@ -67,3 +68,5 @@ def lets_go():
     else:
         print("Герой в замешательстве вертит головой\n")
         lets_go()
+
+
