@@ -58,6 +58,17 @@ def hero_mob_attack():
             sw = 0
             
 
+            def loots():
+                #loot
+                
+
+                print ("New experience {: <12}{}".format("", float(exper())))
+                print ("New gold {: <18} construct".format(""))
+                print ("New loot:{: <20} construct".format(""))
+
+                hero_next_lvl()
+                print ( line )
+
             def logs():
                 global all_mob_hits, all_hero_hits
                 from system.exper import new_exp, exper
@@ -71,12 +82,6 @@ def hero_mob_attack():
                 print ("Agility:{:<18}{}".format("",agility()))
                 print ("Luck:{:<21}{}".format("",luck()))
                             
-                            #loot
-                print ( line )
-                print ("New experience {: <12}{}".format("", float(exper())))
-                print ("New gold {: <18} construct".format(""))
-                print ("New loot:{: <20} construct".format(""))
-
                             #statistic
                 print ( line )
                 print ("Rounds:{: <35} {}".format("",sw))
@@ -90,6 +95,15 @@ def hero_mob_attack():
                 all_mob_hits = 0
                 all_hero_hits = 0
 
+                print ( line )
+
+            def short_log():
+                print ("Experience:{: <14}{}/{}".format("", exp_old(),next_lvl()))
+                print ("Level:{:<20}{}\n".format("",lvl()))
+                print ("Strenght:{:<17}{}".format("",strenght()))
+                print ("Agility:{:<18}{}".format("",agility()))
+                print ("Luck:{:<21}{}".format("",luck()))
+                          
                 print ( line )
 
 
@@ -149,12 +163,7 @@ def hero_mob_attack():
                         print ("Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, life(),"",int_mob_life, mob_hp()))
                         print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
 
-                        print ("Experience:{: <14}{}/{}".format("", exp_old(),next_lvl()))
-                        print ("Level:{:<20}{}\n".format("",lvl()))
-                        print ("Strenght:{:<17}{}".format("",strenght()))
-                        print ("Agility:{:<18}{}".format("",agility()))
-                        print ("Luck:{:<21}{}".format("",luck()))
-                        time.sleep(2)
+                        short_log()
     #############
 
     # обычный удар героя
@@ -177,53 +186,34 @@ def hero_mob_attack():
                         print ("Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, float(life()),"",int_mob_life, float(mob_hp())))
                         print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
 
-                        print ("Experience:{: <14}{}/{}".format("", exp_old(),next_lvl()))
-                        print ("Level:{:<20}{}\n".format("",lvl()))
-                        print ("Strenght:{:<17}{}".format("",strenght()))
-                        print ("Agility:{:<18}{}".format("",agility()))
-                        print ("Luck:{:<21}{}".format("",luck()))
-                          
-                        print ( line )
+                        short_log()
     ###############
 
 
     # проверка на смерть моба и выдача плюшек
                     if int_mob_life <= 0:
-                        
+                        from system.exper import new_exp, exper
                         
                         new_exp()
                         hero_quantity_mob()
 
     #проверка уровня
-                        hero_next_lvl()
+                        
                         
     # Проверка на победу гг     
                         os.system('cls||clear')
                         print ( line )
-                        print ("ПОБЕДА{:<80}".format(" "))
-                        print ("\n")
+                        print ("\nГерой победил злобного монстра!{:<80}\n".format(" ").upper())
+                        
                         # head
                         print ( line )
                         print ("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("",h.title(),"","","Victory!!",""))
                         print ( line )
                         
+                        loots()
                         logs()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                        
-             
 
     # запрос на новый бой
 
@@ -273,35 +263,21 @@ def hero_mob_attack():
                            
                     print ("Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, float(life()),"",int_mob_life, float(mob_hp())))
                     print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
-                    print ("Experience:{: <14}{}/{}".format("", exp_old(),next_lvl()))
-                    print ("Level:{:<20}{}\n".format("",lvl()))
-                    print ("Strenght:{:<17}{}".format("",strenght()))
-                    print ("Agility:{:<18}{}".format("",agility()))
-                    print ("Luck:{:<21}{}".format("",luck()))
-                          
-                    print ( line )           
 
+                    short_log()
 
                     
     # проверка на смерть героя
                     if int_hero_life <= 0:
                         os.system('cls||clear')
                         print ( line )
-
                         print("\n               " + str(h.upper()) + " погиб не выдержав побоев.\n".upper())
-
                         # head
                         print ( line )
-                        
                         print ("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("",h.title(),"","",mob_name().title(),""))
                         print ( line )
 
                         logs()
-
-
-
-
-
 
 
     # зачисление еденичку за убийство
