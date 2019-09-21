@@ -101,4 +101,3 @@ def hero_class():
     a = eval(b)
     c = a["hero_class"]
     return c
-

@@ -10,8 +10,9 @@ from system.random_mob_hp import random_mob_hp, mob_hp
 from system.mob_hit import mob_hit, max_mob_hit
 from system.lets_go import hero_search, lets_go
 from system.hero_next_lvl import hero_next_lvl
-from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob
+from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob, gold
 from system.hero.hero_info import exper as exp_old
+from system.loot import new_gold_from_loot
 #from system.hero.hero_info import quantity_mob as  quan_mob_old
 
 all_mob_hits = 0
@@ -21,6 +22,27 @@ all_hero_hits = 0
 def luck_now():
     from system.definition import luck_check
     luck_check()
+
+# Сохранение рендомного значение денег в переменную
+def new_gold():
+    new_gold = new_gold_from_loot()
+    return float(new_gold)
+
+# Чтение и сохранение денег в файле
+def new_gold_to_wallet():
+
+    q_mob_read = open("system/hero/hero_char.py", "r")
+    b = q_mob_read.readline()
+    a = eval(b)
+    g = float(new_gold())
+    a["gold"] += g
+    q_mob_read.close()
+
+    # запись полученного словаря(полночтью) в файл
+    q_mob_write = open("system/hero/hero_char.py", "w")
+    q_mob_write.write(str(a))
+    q_mob_write.close()
+
 
 def hero_mob_attack():
     if True:
@@ -41,9 +63,11 @@ def hero_mob_attack():
 # LOOTS
             def loots():
                 print ("New experience {: <12}{}".format("", float(exper())))
-                print ("New gold {: <18} construct".format(""))
-                print ("New loot:{: <20} construct".format(""))
                 hero_next_lvl()
+                print ("New money {: <18} {}".format("", new_gold()))
+                new_gold_to_wallet()
+                print ("New loot:{: <20} construct".format(""))
+
                 print ( line )
 
 # LOGS
@@ -58,6 +82,7 @@ def hero_mob_attack():
                 print ("Strenght:{:<17}{}".format("",strenght()))
                 print ("Agility:{:<18}{}".format("",agility()))
                 print ("Luck:{:<21}{}".format("",luck()))
+                print ("Wallet:{:<21}{}".format("", round(gold(),2)))
 
             #statistic
                 print ( line )
@@ -80,9 +105,9 @@ def hero_mob_attack():
 ################################################# TEST ################################
 
 
-                from system.loot import test
+                #from system.loot import new_gold_from_loot
 
-                test()
+                #new_gold_from_loot()
 
 
 
