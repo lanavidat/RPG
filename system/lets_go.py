@@ -7,7 +7,7 @@ def exit():
     sys.exit()
 
 
-# инициализайия поиска нового врага + шапка 
+# инициализайия поиска нового врага + шапка
 
 def hero_search():
     os.system('cls||clear')
@@ -17,7 +17,7 @@ def hero_search():
     #from system.hero.hero_info import hero_name
     #line()
     from system.hero_mob_attack import hero_mob_attack
-    hero_mob_attack()    
+    hero_mob_attack()
 
 def lets_go():
     os.system('cls||clear')
@@ -28,20 +28,19 @@ def lets_go():
     from system.admin_panel import admin_panel
 
     #print("##### TEST #####\n\n\n")                           ###### ТЕСТОВЫЙ ПОЛИГОН ######
-   
-
-    
-
-    
 
 
 
-    #print("\n\n\n##### TEST #####\n\n\n")   
+
+
+
+
+    #print("\n\n\n##### TEST #####\n\n\n")
                             ##############################
 
 
-    h = hero_name()    
-    do = " Приветствуем, " + str(h) + "! Что будешь делать? "   
+    h = hero_name()
+    do = " Приветствуем, " + str(h) + "! Что будешь делать? "
     line()
     print( '{0:~^80}'.format(do.upper()))
     print("{0:~^80} \n\nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
@@ -62,11 +61,9 @@ def lets_go():
 
         admin_panel()
     elif lets_go_go == "0":
-        
+
         about_game()
 
     else:
         print("Герой в замешательстве вертит головой\n")
         lets_go()
-
-

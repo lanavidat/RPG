@@ -15,6 +15,8 @@ def hero_hit():
     y = random.uniform(0,r2)
     return y
 
+    
+# расчет максимального удара героя по мобу
 def max_hero_hit():
     from system.hero.hero_info import agility, strenght, luck, lvl
     s = float(strenght())

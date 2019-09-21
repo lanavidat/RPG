@@ -8,7 +8,7 @@ system.hero_hit
 
 system.hero_mob_attack
 *	hero_mob_attack()		*			--- начало боя
-*	luck_now 							--- проверка на удачу 
+
 
 system.hero_stat
 *	hero_stat()
@@ -96,3 +96,6 @@ system.hero.about_hero					-- словарь, с которого берется
 
 system.hero_next_lvl					-- расчет опыта для следеющего уровня героя
 *	hero_next_lvl 			*
+
+system.def.py               *           -- сборник функций
+*   luck_check              *           -- Проверка на удачу. Чем больше уровень удачи, тем чаще будет случатся удачные события
