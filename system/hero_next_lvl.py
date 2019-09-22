@@ -1,5 +1,6 @@
 def hero_next_lvl():
-        from system.hero.hero_info import exper, next_lvl, lvl, agility, strenght, life, lvl, exper, next_lvl, quantity_mob, luck
+        from system.hero.hero_info import exper, next_lvl, lvl, agility, strenght, life, luck
+
     # чтение количества уже убитых мобов их файла
     # чтение, сохраниене как словарь и +1 к словарю
         q_mob_read = open("system/hero/hero_char.py", "r")
@@ -15,7 +16,7 @@ def hero_next_lvl():
             a["next_lvl"] *= 2
             print ("{:~^80}\n\nТы получил уровень!".upper().format("~"))
 
-    #  генератор числа для повышение характеристики        
+    #  генератор числа для повышение характеристики
             import random
             r = random.random()
     #  если рендом до 0,2 плючика не будет
@@ -44,11 +45,11 @@ def hero_next_lvl():
 
             print("\n\n{:~^80}\n".format("~"))
 
-    #  записывает результат в файл        
+    #  записывает результат в файл
             q_mob_write = open("system/hero/hero_char.py", "w")
             q_mob_write.write(str(a))
             q_mob_write.close()
-            
-          
+
+
         q_mob_read.close()
         # запись полученного словаря(полночтью) в файл

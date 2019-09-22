@@ -2,6 +2,7 @@
 import random
 import os
 import time
+
 from system.hero_hit import hero_hit, max_hero_hit
 from system.hero.hero_quantity_mob import hero_quantity_mob
 from system.hero.hero_quantity_died import hero_quantity_died
@@ -10,8 +11,8 @@ from system.random_mob_hp import random_mob_hp, mob_hp
 from system.mob_hit import mob_hit, max_mob_hit
 from system.lets_go import hero_search, lets_go
 from system.hero_next_lvl import hero_next_lvl
-from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob, gold
-from system.hero.hero_info import exper as exp_old
+#from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob, gold
+from system.hero.hero_info import life, lvl, hero_name
 from system.loot import new_gold_from_loot
 from system.definition import cheat_mode_on_off
 from system.exper import new_exp, exper
@@ -20,26 +21,19 @@ from system.definition import hero_statistics
 all_mob_hits = 0
 all_hero_hits = 0
 
-
-
-
 # Проверка на удачу в бою.
 def luck_now():
     from system.definition import luck_check
     luck_check()
 
-# Сохранение рендомного значение денег в переменную
-def new_gold():
-    new_gold = new_gold_from_loot()
-    return round(new_gold,2)
-
 # Чтение и сохранение денег в файле
 def new_gold_to_wallet():
+    new_gold = new_gold_from_loot()
 
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()
     a = eval(b)
-    g = float(new_gold())
+    g = float(new_gold)
     a["gold"] += g
     q_mob_read.close()
 
@@ -47,6 +41,8 @@ def new_gold_to_wallet():
     q_mob_write = open("system/hero/hero_char.py", "w")
     q_mob_write.write(str(a))
     q_mob_write.close()
+
+    return round(new_gold,2)
 
 # начало атаки на моба
 def hero_mob_attack():
@@ -77,17 +73,17 @@ def hero_mob_attack():
                 print ("Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, float(life()),"",int_mob_life, float(mob_hp())))
                 print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
 
+                # короткий лог + тестовый полигон
                 test()
                 short_log()
 
             # лут и деньги
             def loots():
                 # новый опыт и запуск функции добавление опыта
-                print ("New experience {: <12}{}".format("", float(exper())))
+                print ("New experience {: <12}+{}".format("", float(exper())))
                 hero_next_lvl()
                 # новые деньги и запуск функции добавление денег в кошелек
-                print ("New money {: <18} {}".format("", new_gold()))
-                new_gold_to_wallet()
+                print ("New money {: <18} +{}".format("", new_gold_to_wallet()))
                 # новые вещи и функция добавленеи вещей в мешок
                 print ("New loot:{: <20} construct".format(""))
                 line()
@@ -101,16 +97,15 @@ def hero_mob_attack():
 
                 # разная статистика по персонажу, временная на текущий бой
                 print ("Rounds:{: <35} {}".format("",sw))
-                print ("Hero damages per round:{: <24} {}".format("", round(all_hero_hits, 2)))
-                print ("Mob damages per round:{: <24} {}".format("", round(all_mob_hits,2)))
+                print ("Hero/Mob damages per round:{: <14} {}/{}".format("", round(all_hero_hits, 2), round(all_mob_hits,2)))
+                #print ("Mob damages per round:{: <24} {}".format("", round(all_mob_hits,2)))
                 all_mob_hits = 0
                 all_hero_hits = 0
                 line()
 
-                # Сюда записывать все логи, которые появились после боя
+                # Сюда записывать все временные логи, которые появились после боя
                 def write_logs():
                     pass
-
 
             # начало боя
             while True:
@@ -153,7 +148,6 @@ def hero_mob_attack():
                         print("{:^7}\nТебе улыбнулись сами боги! {} лупит со всей силы! КРИТ! {}НР.\n".format("",hero_name().title(),hero_hits))
 
                         # рамка #####
-                        test()
                         frame()
                         #############
 
@@ -174,7 +168,6 @@ def hero_mob_attack():
                             print("\n{} бъет на {}НР\n".format(h.title(), hero_hits))
 
                         # рамка
-                        test()
                         frame()
                         ###############
 
@@ -193,10 +186,11 @@ def hero_mob_attack():
                         # head
                         line()
                         print ("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("",h.title(),"","","Victory!!",""))
-                        
+
 
                         loots()
                         logs()
+                        test()
 
                         # запрос на новый бой, таймер
                         import signal
@@ -231,8 +225,7 @@ def hero_mob_attack():
                     line()
                     print("\n{: ^50}{} кусает героя на {}HP\n".format("",mob_name().title(),mob_hits))
 
-                    # рамка
-                    test()
+                    # рамка + тестовый полигон
                     frame()
                     #######
 

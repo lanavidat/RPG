@@ -50,22 +50,19 @@ def line():
 def hero_statistics():
     cheat_mode_on_off()
     line()
-    print ("Уровень жизни Героя:{: <19}{}".format("", life()))
+    print ("Количество жизни Героя:{: <19}{}".format("", life()))
     print ("Максимальный урон:{: <22}{}".format("", max_hero_hit()))
     line()
     short_log()
     print ("Кошель:{:<21}{}".format("", round(gold(),2)))
     line()
     print ("Всего боевых раундов:{: <27} construct".format(""))
-    #print ("Mob ounds:{: <30} construct".format(""))
-    print ("Количество побед:{: <25}{}".format("", quantity_mob()))
-    print ("Количество смертей:{: <30}{}".format("", hero_died()))
+    print ("Количество побед/смертей героя:{: <15}{}/{}".format("", quantity_mob(), hero_died()))
     line()
 
 # выводит краткую статистику по гг
 def short_log():
-    print ("Опыт:{: <14}{}/{}".format("", exper(),next_lvl()))
-    print ("Уровень:{:<20}{}".format("",lvl()))
+    print ("Уровень и опыт:{:<10}{} ({}/{})".format("",lvl(),exper(),next_lvl()))
     line()
     print ("Сила:{:<17}{}".format("",strenght()))
     print ("Ловкость:{:<18}{}".format("",agility()))
