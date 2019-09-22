@@ -1,17 +1,29 @@
+################################################################################
+папка.файл_без_*.py
+                            * - активное по умолчанию
+                            ** - функция которая может используется в других местах
+                                - без метки служебная функция
+                                        -- комментарии к функции
+{словарь}
+функция
+################################################################################
+
 system.hello
-*	line()					*
-*	hello()
+*	line 					*          -- рисует линию для меню - "~"
+*	hello
 
 system.hero_hit
-*	hero_hit()
+*	hero_hit
 *	max_hero_hit			*
 
 system.hero_mob_attack
-*	hero_mob_attack()		*			--- начало боя
+*	hero_mob_attack  		*			-- начало боя
+*   luck_now                            -- проверка на удачу
+*   new_gold                            -- генератор мелочи после убийства моба
+*   new_gold_to_wallet                  -- сохранение мелочи в файл характеритик
 
-
-system.hero_stat
-*	hero_stat()
+system.hero_stat                        -- отображает статистику на через главное меню
+*	hero_stat               * **
 
 system.mob.mob_char
 *	{mob_agility}
@@ -23,17 +35,17 @@ system.mob.mob_char
 *	{mob_gold}
 
 system.mob.mob_info
-*	mob_lvl()
-*	mob_gold()
-*	mob_agility()
-*	mob_strenght()
-*	mob_life()
-*	mob_lock()
-*	mob_exper()
+*	mob_lvl
+*	mob_gold
+*	mob_agility
+*	mob_strenght
+*	mob_life
+*	mob_lock
+*	mob_exper
 
 syster.admin_panel
-*	admin_panel()
-*	data_dase()
+*	admin_panel
+*	data_dase
 
 system.random_mob_hp
 *	mob_hp
@@ -54,32 +66,32 @@ system.hero.hero_quantity_mob
 *	hero_quantity_mob
 
 system.hero.hero_info
-*	agility()
-*	strenght()
-*	life()
-*	luck()
-*	exper()
-*	lvl()
-*	next_lvl()
-*	quantity_mob()
-*	gold()
+*	agility
+*	strenght
+*	life
+*	luck
+*	exper
+*	lvl
+*	next_lvl
+*	quantity_mob
+*	gold
 
 system.hero.mob_name
-*	mob_rand_name()
-*	mob_name()
+*	mob_rand_name
+*	mob_name
 
 system.exper
-*	exper()
+*	exper
 
 launcher
-*	exit()
+*	exit
 
 system.about_game
-*	about_game()
+*	about_game
 
 system.exper
-*	new_exp()				*
-*	exper()
+*	new_ex				*
+*	exper
 
 system.hero.hero_name_class				--	содержит информацию про имя и класс гг. позволяет менять имя\класс
 *	hero_name 				*
@@ -88,14 +100,19 @@ system.hero.hero_name_class				--	содержит информацию про �
 *	change_hero_class
 
 system.hero.about_hero					-- словарь, с которого берется информация про гг для hero_name_class
-*	{hero_name}				*
+*	{hero_name}				**
 *	{hero_calss_warrior}
 *	{hero_calss_hunter}
 *	{hero_calss_mage}
-*	{hero_class}			*
+*	{hero_class}			**
+*   {cheat_mode}                        -- 0/1 - метка чит-мода
 
-system.hero_next_lvl					-- расчет опыта для следеющего уровня героя
+system.hero_next_lvl					-- расчет опыта для следующего уровня героя
 *	hero_next_lvl 			*
 
-system.def.py               *           -- сборник функций
-*   luck_check              *           -- Проверка на удачу. Чем больше уровень удачи, тем чаще будет случатся удачные события
+system.definition                       -- сборник разнотипных функций
+*   luck_check              **          -- Проверка на удачу. Чем больше уровень удачи, тем чаще будет случатся удачные события
+*   hero_statistics         **          -- Отображает статистику по персонажу. На него ссылаются все, где нужно посмотреть характеристику
+*   line                    **          -- рисует линию. Используется везде в бою или характеристикам - "-"
+*   short_log               **          -- выводит краткую статистику по гг
+*   test                    **          -- функция для тестового полигона

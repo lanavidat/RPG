@@ -15,6 +15,7 @@ def lvl():
     b = a["lvl"]
     return b
     q_mob_read.close()
+
 # Опыта до следующего уровня для героя
 def next_lvl():
     q_mob_read = open("system/hero/hero_char.py", "r")
@@ -23,6 +24,7 @@ def next_lvl():
     b = a["next_lvl"]
     return b
     q_mob_read.close()
+
 # ловкость
 def agility():
     q_mob_read = open("system/hero/hero_char.py", "r")
@@ -31,6 +33,7 @@ def agility():
     b = a["agility"]
     return b
     q_mob_read.close()
+
 # Сила
 def strenght():
     q_mob_read = open("system/hero/hero_char.py", "r")
@@ -39,54 +42,53 @@ def strenght():
     b = a["strenght"]
     return b
     q_mob_read.close()
-# Life
+
+# уровень жизни героя
 def life():
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()
-    #print(type(b))
     a = eval(b)
     b = a["life"]
     return b
     q_mob_read.close()
-# luck
+
+# удача героя
 def luck():
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()
-    #print(type(b))
     a = eval(b)
     b = a["luck"]
     return b
     q_mob_read.close()
+
 # текущий опыт
 def exper():
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()
-    #print(type(b))
     a = eval(b)
     b =a["exper"]
     return round(b, 2)
     q_mob_read.close()
-# Gold
+
+# деньги 
 def gold():
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()
-    #print(type(b))
     a = eval(b)
     b = a["gold"]
     return b
     q_mob_read.close()
 
-# hero_died
+# количество смертей гг
 def hero_died():
     q_mob_read = open("system/hero/hero_char.py", "r")
     b = q_mob_read.readline()
-    #print(type(b))
     a = eval(b)
     b = a["hero_died"]
     return b
     q_mob_read.close()
 
-# hero name
+# имя героя
 def hero_name():
     i = open("system/hero/about_hero.py", "r")
     b = i.readline()
@@ -94,7 +96,7 @@ def hero_name():
     c = a["hero_name"]
     return c
 
-#hero class
+# класс героя
 def hero_class():
     i = open("system/hero/about_hero.py", "r")
     b = i.readline()

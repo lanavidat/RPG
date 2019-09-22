@@ -7,17 +7,15 @@ import random
 def all_loot_gold():
     pass
 
+# генератор денег
 def new_gold_from_loot():
     total_gold_from_mob_life = float(mob_hp())
     random_gold_chance = float(random.randint (0, total_gold_from_mob_life))
-    #luck = luck_check()
 
     random_gold = float(random_gold_chance ) * 0.01
 
     return random_gold
 
-    #print ( random_gold )
-    #loot_gold = total_gold_from_mob_life //
-
+# кошель
 def wallet():
     pass
