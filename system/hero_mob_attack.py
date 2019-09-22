@@ -28,21 +28,24 @@ def luck_now():
 
 # Чтение и сохранение денег в файле
 def new_gold_to_wallet():
-    new_gold = new_gold_from_loot()
+    from system.modules import module_cash_switch
+    module_cash_switch = module_cash_switch()
+    if module_cash_switch == 1:
+        new_gold = new_gold_from_loot()
 
-    q_mob_read = open("system/hero/hero_char.py", "r")
-    b = q_mob_read.readline()
-    a = eval(b)
-    g = float(new_gold)
-    a["gold"] += g
-    q_mob_read.close()
+        q_mob_read = open("system/hero/hero_char.py", "r")
+        b = q_mob_read.readline()
+        a = eval(b)
+        g = float(new_gold)
+        a["gold"] += g
+        q_mob_read.close()
 
-    # запись полученного словаря(полночтью) в файл
-    q_mob_write = open("system/hero/hero_char.py", "w")
-    q_mob_write.write(str(a))
-    q_mob_write.close()
+        # запись полученного словаря(полночтью) в файл
+        q_mob_write = open("system/hero/hero_char.py", "w")
+        q_mob_write.write(str(a))
+        q_mob_write.close()
 
-    return round(new_gold,2)
+        return round(new_gold,2)
 
 # начало атаки на моба
 def hero_mob_attack():
@@ -52,6 +55,8 @@ def hero_mob_attack():
             random_mob_hp()
             global all_mob_hits, all_hero_hits
             from system.definition import short_log, line, test
+            #from system.modules import module_cash_switch
+
 
             h = hero_name()
             max_hit = max_hero_hit()
@@ -79,14 +84,23 @@ def hero_mob_attack():
 
             # лут и деньги
             def loots():
+                # импорт модулей
+                from system.modules import module_cash_switch, module_loot_switch
+                module_loot = module_loot_switch()
+                module_cash_switch = module_cash_switch()
+
                 # новый опыт и запуск функции добавление опыта
                 print ("New experience {: <12}+{}".format("", float(exper())))
                 hero_next_lvl()
+
                 # новые деньги и запуск функции добавление денег в кошелек
-                print ("New money {: <18} +{}".format("", new_gold_to_wallet()))
+                if module_cash_switch == 1:
+                    print ("New money {: <18} +{}".format("", new_gold_to_wallet()))
+
                 # новые вещи и функция добавленеи вещей в мешок
-                print ("New loot:{: <20} construct".format(""))
-                line()
+                if module_loot == 1:
+                    print ("New loot:{: <20} construct".format(""))
+                    line()
 
             # логи и характеристика персонажа
             def logs():

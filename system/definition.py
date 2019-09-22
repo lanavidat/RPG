@@ -10,6 +10,7 @@ from system.random_mob_hp import random_mob_hp, mob_hp
 from system.mob_hit import mob_hit, max_mob_hit
 from system.hero_next_lvl import hero_next_lvl
 from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob, gold, exper
+from system.modules import module_wallet, module_cash_switch, module_more_statistics, module_loot
 
 # Проверка на удачу. Чем больше уровень удачи, тем чаще будет случатся удачные события
 def luck_check():
@@ -54,11 +55,9 @@ def hero_statistics():
     print ("Максимальный урон:{: <22}{}".format("", max_hero_hit()))
     line()
     short_log()
-    print ("Кошель:{:<21}{}".format("", round(gold(),2)))
-    line()
-    print ("Всего боевых раундов:{: <27} construct".format(""))
-    print ("Количество побед/смертей героя:{: <15}{}/{}".format("", quantity_mob(), hero_died()))
-    line()
+    module_wallet()
+    module_more_statistics()
+    module_loot()
 
 # выводит краткую статистику по гг
 def short_log():
@@ -78,7 +77,6 @@ def test():
     #from system.loot import new_gold_from_loot
 
     #new_gold_from_loot()
-
 
 
 ################################################################################
