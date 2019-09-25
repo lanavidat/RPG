@@ -1,5 +1,6 @@
 import os
 
+# ----------------------> Main menu --------------------------------------------
 # админ меню
 def admin_panel():
 
@@ -8,20 +9,75 @@ def admin_panel():
     print( '{0:~^80}' .format("~"))
     do = " ADMIN PANEL "
     print( '{0:!^80}' .format(do))
-    print("{0:~^80} \n\nОбнулить характеристики героя: 1\nСброс класса персонажа: 2\nВыбрать нового имени для ГГ: 3\n\
-------------------\n\
-Работа с базой: 4\nCheate Mode: 5\n\
-------------------\nВыйти в главное меню: 9".format("~"))
-    #
+    print("{0:~^80} \n\nНастройка героя: 1\n\
+Настройка Мира: 2\
+\n------------------\n\
+Cheate Mode: 3\n\
+\n------------------\n\
+Выйти в главное меню: 0".format("~"))
+
+    #запрос на действие в главном меню
     go = input("\nЧто сделать? ")
 
-    # выйти в главное меню
-    if go == "9":
+    # редактировать гг
+    if go == "1":
+        configure_of_hero()
+
+    # редактировать мир
+    elif go == "2":
+        data_base()
+
+    # переход в Cheate Mode
+    elif go == "3":
+        cheat_mode()
+
+    elif go == "4":
+        pass
+
+    elif go == "5":
+        pass
+
+    elif go == "6":
+        pass
+
+    elif go == "7":
+        pass
+
+    elif go == "8":
+        pass
+
+    elif go == "9":
+        pass
+
+    # уходит в главное меню
+    elif go == "0":
         from launcher import lets_go
         lets_go()
 
+    # уходит в  Админку
+    else:
+        admin_panel()
+
+# ----------------------------------< Main -------------------------------------
+# ------------------------------------------------------------------------------
+# -----------------------> Hero menu -------------------------------------------
+def configure_of_hero():
+
+    # шапка и выбор
+    os.system('cls||clear')
+    print( '{0:~^80}' .format("~"))
+    do = " ADMIN PANEL "
+    print( '{0:!^80}' .format(do))
+    print("{0:~^80} \n\nОбнулить характеристики героя: 1\nСброс класса персонажа: 2\n\
+Выбрать нового имени для ГГ: 3\nПросмотр текущих характеритик ГГ: 4\n\
+    ------------------\n\
+Выйти в админку: 9\n\
+Выйти в главное меню: 0".format("~"))
+    #
+    go = input("\nЧто сделать? ")
+
 # сброс характеристик героя из файла hero_char
-    elif go == "1":
+    if go == "1":
         q = input("Точно сбросить все характерисики ГГ? (y/n): ")
 
         # подтверждение на обнуление характеристик
@@ -58,59 +114,13 @@ def admin_panel():
         name_write = open("system/hero/about_hero.py", "w")
         name_write.write(str(a))
         name_write.close()
-        next = input("Имя героя изменено, теперь тебя зовут " + str(new_name.title()))
+        next = input("Имя героя изменено, теперь тебя зовут- " + str(new_name.title()))
 
         # уходит в админ панель при любом действии
         if not next:
             admin_panel()
         else:
             admin_panel()
-
-    # редактировать DataBase
-    elif go == "4":
-        data_base()
-
-    # переход в Cheate Mode
-    elif go == "5":
-        cheat_mode()
-
-    # уходит в админ панель
-    else:
-        admin_panel()
-
-# Просмотр и изменение базы имен мобов
-def data_base():
-
-    # шапка и выбор
-    os.system('cls||clear')
-    i = " Работа с базой имен монстров "
-    print( '{0:~^80}' .format("~"))
-    print( '{0:!^80}' .format(i.upper()))
-    print("{:~^80} \n\nПосмотреть все доступные имена мобов: 1\nДобавить нового моба: 2\nОткорректировать имеющееся имя: 3\
-\nПросмотр текущих характеритик ГГ: 4\nАктивные модули: 5\nВключить/выключить модули: 6\
-\n-------------------\nВыйти в Админку: 9\nВыйти в начало игры: 0\n".format("~"))
-    go = input("\nЧто делаем? ")
-
-    # просмотр все имена доступных мобов
-    if go == "1":
-        os.system('cls||clear')
-        name = open("system/hero/mob_names.txt", "r").read()
-        print("Текущие имена мобов в базе:\n\n" + str(name))
-        i = input("\nПродолжить... ")
-
-        # уходит в админ панель при любом действии
-        if not i:
-            data_base()
-        else:
-            data_base()
-
-    # добавить нового моба
-    elif go == "2":
-        data_base()
-
-    # Откорректировать имена имеющихся мобов
-    elif go == "3":
-        data_base()
 
     # Просмотр характеристик гг
     elif go == "4":
@@ -129,49 +139,57 @@ def data_base():
 
         # уходит в админ панель при любом действии
         if not i:
-            data_base()
+            configure_of_hero()
         else:
-            data_base()
+            configure_of_hero()
 
-    # проверка модулей
     elif go == "5":
-        module = open("system/list_of_modules.py", "r")
-        b = module.readline()
-        a = eval(b)
-        module_wallet_on = a["module_wallet"]
-        module_gold_on = a["module_gold"]
-        module_statistics_on = a['module_more_statistics']
-        module_loot_on = a['module_loot']
+        pass
 
-        # проверка на включение моделя денег
-        def module_cash_switch():
-            if module_wallet_on == 1 and module_gold_on == 1:
-                print ("Модуль денег включен")
-            else:
-                print("> Модуль денег не активен".upper())
+    elif go == "6":
+        pass
 
-        # проверка на включенность модуля для доп.статистики
-        def module_statistics_switch():
-            if module_statistics_on == 1:
-                print ("Модуль расширенной статистики включен")
-            else:
-                print("> Модуль расширенной статистики не активен".upper())
+    elif go == "7":
+        pass
 
-        # проверка на включенность модуля для доп.статистики
-        def module_loot_switch():
-            if module_loot_on == 1:
-                print ("Модуль лута включен")
-            else:
-                print("> Модуль лута не активен".upper())
+    elif go == "8":
+        pass
 
-        module.close()
+    #   переход в админку
+    elif go == "9":
+        admin_panel()
+
+    # уходит в главное меню
+    elif go == "0":
+        from launcher import lets_go
+        lets_go()
+
+    # уходит в  Админку
+    else:
+        admin_panel()
+
+# -----------------------< Hero menu -------------------------------------------
+# ------------------------------------------------------------------------------
+# --------------------------------> Module menu --------------------------------
+# Просмотр и изменение базы имен мобов
+def data_base():
+
+    # шапка и выбор
+    os.system('cls||clear')
+    i = " Настройка Мира "
+    print( '{0:~^80}' .format("~"))
+    print( '{0:!^80}' .format(i.upper()))
+    print("{:~^80} \n\nПосмотреть все доступные имена мобов: 1\nДобавить нового моба: 2\nОткорректировать имеющееся имя: 3\
+\n-------------------\nАктивные модули: 5\nВключить/выключить модули: 6\
+\n-------------------\nВыйти в Админку: 9\nВыйти в начало игры: 0\n".format("~"))
+    go = input("\nЧто делаем? ")
+
+    # просмотр все имена доступных мобов
+    if go == "1":
         os.system('cls||clear')
-        print ("Проверка включенных модулей\n")
-        module_cash_switch()
-        module_loot_switch()
-        module_statistics_switch()
-
-        i = input("\nПродолжим ...")
+        name = open("system/hero/mob_names.txt", "r").read()
+        print("Текущие имена мобов в базе:\n\n" + str(name))
+        i = input("\nПродолжить... ")
 
         # уходит в админ панель при любом действии
         if not i:
@@ -179,146 +197,43 @@ def data_base():
         else:
             data_base()
 
-# включить/выключить модули
+    elif go == "2":
+        pass
+
+    elif go == "3":
+        pass
+
+    elif go == "4":
+        cheat_mode()
+
+    elif go == "5":
+        on_off_module()
+
     elif go == "6":
-        print ("Включить модель - 1. Выключить модуль - 0. Не изменять значение - Enter. Востановить стандартные значение - 8")
-
-        def statistics():
-            i = input ("Модуль 'Дополнительная статистика': ")
-            if i == "1":
-                module = open("system/list_of_modules.py", "r")
-                b = module.readline()
-                a = eval(b)
-                a["module_more_statistics"] = 1
-                module.close()
-                # запись полученного словаря(полночтью) в файл
-                module = open("system/list_of_modules.py", "w")
-                module.write(str(a))
-                module.close()
-
-                print ("Модуль 'Дополнительная статистика' активирован")
-                i = input("\nПродолжим ...")
-
-                # уходит в админ панель при любом действии
-                if not i:
-                    data_base()
-                else:
-                    data_base()
-
-            elif i == "0":
-                module = open("system/list_of_modules.py", "r")
-                b = module.readline()
-                a = eval(b)
-                a["module_more_statistics"] = 0
-                module.close()
-                # запись полученного словаря(полночтью) в файл
-                module = open("system/list_of_modules.py", "w")
-                module.write(str(a))
-                module.close()
-                print ("Модуль 'Дополнительная статистика' выключен")
-
-                i = input("\nПродолжим ...")
-
-                # уходит в админ панель при любом действии
-                if not i:
-                    data_base()
-                else:
-                    data_base()
-
-            elif not i:
-                data_base()
-
-        def loot():
-            i = input ("Модуль 'Лут': ")
-            if i == "1":
-                module = open("system/list_of_modules.py", "r")
-                b = module.readline()
-                a = eval(b)
-                a["module_loot"] = 1
-                module.close()
-                # запись полученного словаря(полночтью) в файл
-                module = open("system/list_of_modules.py", "w")
-                module.write(str(a))
-                module.close()
-
-                print ("Модуль 'Лут' активирован")
-                statistics()
-
-            elif i == "0":
-                module = open("system/list_of_modules.py", "r")
-                b = module.readline()
-                a = eval(b)
-                a["module_loot"] = 0
-                module.close()
-                # запись полученного словаря(полночтью) в файл
-                module = open("system/list_of_modules.py", "w")
-                module.write(str(a))
-                module.close()
-                print ("Модуль 'Лут' выключен")
-                statistics()
-
-            elif not i:
-                statistics()
-
-        def money():
-            i = input ("Модуль денег: ")
-            if i == "1":
-                module = open("system/list_of_modules.py", "r")
-                b = module.readline()
-                a = eval(b)
-                a["module_gold"] = 1
-                a['module_wallet'] = 1
-                module.close()
-                # запись полученного словаря(полночтью) в файл
-                module = open("system/list_of_modules.py", "w")
-                module.write(str(a))
-                module.close()
-                print ("Модуль 'Деньги' активирован")
-                loot()
-
-            elif i == "0":
-                module = open("system/list_of_modules.py", "r")
-                b = module.readline()
-                a = eval(b)
-                a["module_gold"] = 0
-                a['module_wallet'] = 0
-                module.close()
-                # запись полученного словаря(полночтью) в файл
-                module = open("system/list_of_modules.py", "w")
-                module.write(str(a))
-                module.close()
-                print ("Модуль 'Деньги' выключен")
-                loot()
-
-            elif not i:
-                loot()
-
-
-
-
-
-        money()
-
+        pass
 
     elif go == "7":
-        data_base()
-    elif go == "8":
-        data_base()
+        pass
 
-    # уходит в главное меню
+    elif go == "8":
+        pass
+
+    elif go == "9":
+        admin_panel()
+
     elif go == "0":
         from launcher import lets_go
         lets_go()
 
-    # уходит в админку
-    elif go == "9":
-        admin_panel()
+# --------------------------------< Module menu --------------------------------
 
-    # уходит в датабазу
-    else:
-        data_base()
 
-# режим чита-мода
+#   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#   !!!!!!!!!!!!!!!!!! ФУНКЦИИ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+# --------------------------------> #3.0 CHEAT MODE ----------------------------
 def cheat_mode():
 
     # шапка и режим выбора
@@ -364,7 +279,7 @@ def cheat_mode():
     else:
         data_base()
 
-# CHEAT MODE
+#
 def cheat_mode_on():
     cheat = open("system/hero/hero_char.py", "r")
     t = cheat.readline()
@@ -403,3 +318,180 @@ def cheat_mode_off():
     cheat_mode = open("system/hero/about_hero.py", "w")
     cheat_mode.write(str(n))
     cheat_mode.close()
+# --------------------------------- < Cheat Mode function ----------------------
+# ------------------------------------------------------------------------------
+# -------------------> Function of Module --------------------------------------
+
+#  Проверка включеных модулей
+def check_module():
+    module = open("system/list_of_modules.py", "r")
+    b = module.readline()
+    a = eval(b)
+    module_wallet_on = a["module_wallet"]
+    module_gold_on = a["module_gold"]
+    module_statistics_on = a['module_more_statistics']
+    module_loot_on = a['module_loot']
+
+    # проверка на включение моделя денег
+    def module_cash_switch():
+        if module_wallet_on == 1 and module_gold_on == 1:
+            print ("Модуль денег включен")
+        else:
+            print("> Модуль денег не активен".upper())
+
+    # проверка на включенность модуля для доп.статистики
+    def module_statistics_switch():
+        if module_statistics_on == 1:
+            print ("Модуль расширенной статистики включен")
+        else:
+            print("> Модуль расширенной статистики не активен".upper())
+
+    # проверка на включенность модуля для доп.статистики
+    def module_loot_switch():
+        if module_loot_on == 1:
+            print ("Модуль лута включен")
+        else:
+            print("> Модуль лута не активен".upper())
+
+        module.close()
+        os.system('cls||clear')
+        print ("Проверка включенных модулей\n")
+        module_cash_switch()
+        module_loot_switch()
+        module_statistics_switch()
+
+        i = input("\nПродолжим ...")
+
+        # уходит в админ панель при любом действии
+        if not i:
+            data_base()
+        else:
+            data_base()
+
+# включить/выключить модуль
+def on_off_module():
+    os.system('cls||clear')
+
+    print( '{0:~^80}' .format("~"))
+    do = " Включить/выключить модули "
+    print( '{0::^80}' .format(do))
+    print( '{0:~^80}' .format("~"))
+
+    print ("Включить модуль - 1. Выключить модуль - 0. \n\
+Не изменять значение - Enter. \n\
+Востановить стандартные значение - 8\n")
+
+    def statistics():
+        i = input ("Модуль 'Дополнительная статистика': ")
+        if i == "1":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_more_statistics"] = 1
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+
+            print ("Модуль 'Дополнительная статистика' активирован")
+            i = input("\nПродолжим ...")
+
+            # уходит в админ панель при любом действии
+            if not i:
+                data_base()
+            else:
+                data_base()
+
+        elif i == "0":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_more_statistics"] = 0
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print ("Модуль 'Дополнительная статистика' выключен")
+
+            i = input("\nПродолжим ...")
+
+            # уходит в админ панель при любом действии
+            if not i:
+                data_base()
+            else:
+                data_base()
+
+        elif not i:
+            data_base()
+
+    def loot():
+        i = input ("Модуль 'Лут': ")
+        if i == "1":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_loot"] = 1
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+
+            print ("Модуль 'Лут' активирован")
+            statistics()
+
+        elif i == "0":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_loot"] = 0
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print ("Модуль 'Лут' выключен")
+            statistics()
+
+        elif not i:
+            statistics()
+
+    def money():
+        i = input ("Модуль денег: ")
+        if i == "1":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_gold"] = 1
+            a['module_wallet'] = 1
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print ("Модуль 'Деньги' активирован")
+            loot()
+
+        elif i == "0":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_gold"] = 0
+            a['module_wallet'] = 0
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print ("Модуль 'Деньги' выключен")
+            loot()
+
+        elif not i:
+            loot()
+
+    money()
+
+# -------------------< Function of Module --------------------------------------
+# ------------------------------------------------------------------------------
