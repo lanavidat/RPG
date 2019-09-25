@@ -96,6 +96,8 @@ def hero_mob_attack():
                 # новые деньги и запуск функции добавление денег в кошелек
                 if module_cash_switch == 1:
                     print ("New money {: <18} +{}".format("", new_gold_to_wallet()))
+                else:
+                    None
 
                 # новые вещи и функция добавленеи вещей в мешок
                 if module_loot == 1:

@@ -9,10 +9,10 @@ def admin_panel():
     print( '{0:~^80}' .format("~"))
     do = " ADMIN PANEL "
     print( '{0:!^80}' .format(do))
-    print("{0:~^80} \n\nНастройка героя: 1\n\
+    print("{0:~^80} \n\nНастройка Героя: 1\n\
 Настройка Мира: 2\
 \n------------------\n\
-Cheate Mode: 3\n\
+Cheate Mode: 3\
 \n------------------\n\
 Выйти в главное меню: 0".format("~"))
 
@@ -70,7 +70,7 @@ def configure_of_hero():
     print( '{0:!^80}' .format(do))
     print("{0:~^80} \n\nОбнулить характеристики героя: 1\nСброс класса персонажа: 2\n\
 Выбрать нового имени для ГГ: 3\nПросмотр текущих характеритик ГГ: 4\n\
-    ------------------\n\
+------------------\n\
 Выйти в админку: 9\n\
 Выйти в главное меню: 0".format("~"))
     #
@@ -128,10 +128,11 @@ def configure_of_hero():
         # шапка и выбор
         os.system('cls||clear')
         from system.hello import line
-        line()
-        line()
-        go = " Твои характеристики: "
 
+        line()
+        info = " Твои характеристики: "
+        print ("{0:^80}".format(info.upper()))
+        line()
         from system.definition import hero_statistics
         hero_statistics()
 
@@ -170,7 +171,7 @@ def configure_of_hero():
 
 # -----------------------< Hero menu -------------------------------------------
 # ------------------------------------------------------------------------------
-# --------------------------------> Module menu --------------------------------
+# --------------------------------> Mobs&Module menu --------------------------------
 # Просмотр и изменение базы имен мобов
 def data_base():
 
@@ -180,7 +181,7 @@ def data_base():
     print( '{0:~^80}' .format("~"))
     print( '{0:!^80}' .format(i.upper()))
     print("{:~^80} \n\nПосмотреть все доступные имена мобов: 1\nДобавить нового моба: 2\nОткорректировать имеющееся имя: 3\
-\n-------------------\nАктивные модули: 5\nВключить/выключить модули: 6\
+\n-------------------\nАктивные модули: 4\nВключить/выключить модули: 5\
 \n-------------------\nВыйти в Админку: 9\nВыйти в начало игры: 0\n".format("~"))
     go = input("\nЧто делаем? ")
 
@@ -204,7 +205,7 @@ def data_base():
         pass
 
     elif go == "4":
-        cheat_mode()
+        check_module()
 
     elif go == "5":
         on_off_module()
@@ -354,19 +355,20 @@ def check_module():
             print("> Модуль лута не активен".upper())
 
         module.close()
-        os.system('cls||clear')
-        print ("Проверка включенных модулей\n")
-        module_cash_switch()
-        module_loot_switch()
-        module_statistics_switch()
 
-        i = input("\nПродолжим ...")
+    os.system('cls||clear')
+    print ("Проверка включенных модулей\n")
+    module_cash_switch()
+    module_loot_switch()
+    module_statistics_switch()
 
-        # уходит в админ панель при любом действии
-        if not i:
-            data_base()
-        else:
-            data_base()
+    i = input("\nПродолжим ...")
+
+    # уходит в админ панель при любом действии
+    if not i:
+        data_base()
+    else:
+        data_base()
 
 # включить/выключить модуль
 def on_off_module():
@@ -394,13 +396,15 @@ def on_off_module():
             module.write(str(a))
             module.close()
 
-            print ("Модуль 'Дополнительная статистика' активирован")
+            print ("Модуль 'Дополнительная статистика' активирован. Нужен перезапуск игры")
             i = input("\nПродолжим ...")
 
             # уходит в админ панель при любом действии
             if not i:
+                input ("Не известная команда...")
                 data_base()
             else:
+                input ("Не известная команда...")
                 data_base()
 
         elif i == "0":
@@ -413,17 +417,23 @@ def on_off_module():
             module = open("system/list_of_modules.py", "w")
             module.write(str(a))
             module.close()
-            print ("Модуль 'Дополнительная статистика' выключен")
+            print ("Модуль 'Дополнительная статистика' выключен. Нужен перезапуск игры")
 
             i = input("\nПродолжим ...")
-
             # уходит в админ панель при любом действии
             if not i:
+                input ("Не известная команда...")
                 data_base()
             else:
+                input ("Не известная команда...")
                 data_base()
 
+        # уходит в админ панель при любом действии
         elif not i:
+            input ("Не известная команда...")
+            data_base()
+        else:
+            input ("Не известная команда...")
             data_base()
 
     def loot():
@@ -439,7 +449,7 @@ def on_off_module():
             module.write(str(a))
             module.close()
 
-            print ("Модуль 'Лут' активирован")
+            print ("Модуль 'Лут' активирован. Нужен перезапуск игры")
             statistics()
 
         elif i == "0":
@@ -452,10 +462,14 @@ def on_off_module():
             module = open("system/list_of_modules.py", "w")
             module.write(str(a))
             module.close()
-            print ("Модуль 'Лут' выключен")
+            print ("Модуль 'Лут' выключен. Нужен перезапуск игры")
             statistics()
 
         elif not i:
+            input ("Не известная команда...")
+            statistics()
+        else:
+            input ("Не известная команда...")
             statistics()
 
     def money():
@@ -471,7 +485,7 @@ def on_off_module():
             module = open("system/list_of_modules.py", "w")
             module.write(str(a))
             module.close()
-            print ("Модуль 'Деньги' активирован")
+            print ("Модуль 'Деньги' активирован. Нужен перезапуск игры")
             loot()
 
         elif i == "0":
@@ -485,10 +499,14 @@ def on_off_module():
             module = open("system/list_of_modules.py", "w")
             module.write(str(a))
             module.close()
-            print ("Модуль 'Деньги' выключен")
+            print ("Модуль 'Деньги' выключен. Нужен перезапуск игры")
             loot()
 
         elif not i:
+            input ("Не известная команда...")
+            loot()
+        else:
+            input ("Не известная команда...")
             loot()
 
     money()

@@ -37,6 +37,8 @@ def module_wallet():
         from system.hero.hero_info import gold
         print ( "Кошель:{:<21}{}".format("", round(gold(),2)))
         line()
+    else:
+        None
 
 # модуль отображение дополнительной статистики
 def module_more_statistics():
