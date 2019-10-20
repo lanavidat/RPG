@@ -10,7 +10,7 @@ from system.random_mob_hp import random_mob_hp, mob_hp
 from system.mob_hit import mob_hit, max_mob_hit
 from system.hero_next_lvl import hero_next_lvl
 from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob, gold, exper
-from system.modules import module_wallet, module_cash_switch, module_more_statistics, module_loot
+from system.modules import module_wallet, module_cash_switch, module_more_statistics, module_loot, module_expended_statics
 
 # Проверка на удачу. Чем больше уровень удачи, тем чаще будет случатся удачные события
 def luck_check():
@@ -32,16 +32,13 @@ def luck_check():
 # проверка на чит-мод
 def cheat_mode_on_off():
     # проверка на чит режим
-    cheat = open("system/hero/about_hero.py", "r")
-    b = cheat.readline()
-    a = eval(b)
-    cheat_mode_on_off = a["cheat_mode"]
-
-    if cheat_mode_on_off == 1:
-        print ("{0:@<35} cheat mode ON {0:@>30}\n".format(""))
+    from system.modules import module_cheat_mode_switch
+    module_on = str(module_cheat_mode_switch())
+    if module_on == "1":
+        print ("{0:@<30} cheat mode ON {0:@>35}".format(""))
     else:
         pass
-    cheat.close()
+
 
 # рисует линию "-"
 def line():
@@ -61,24 +58,35 @@ def hero_statistics():
 
 # выводит краткую статистику по гг
 def short_log():
-    print ("Уровень и опыт:{:<10}{} ({}/{})".format("",lvl(),exper(),next_lvl()))
     line()
-    print ("Сила:{:<17}{}".format("",strenght()))
-    print ("Ловкость:{:<18}{}".format("",agility()))
-    print ("Удача:{:<21}{}".format("",luck()))
+    from system.modules import module_expended_statics
+    module_expended_statics_on = module_expended_statics()
+    print ("Уровень и опыт:{}({}/{}) | ".format(lvl(),exper(),next_lvl()),end=" ")
+    print ("Сила:{} | Ловкость:{} | Удача:{} ".format(strenght(), agility(), luck()))
+    if module_expended_statics_on == 1:
+        pass
+
     line()
 
 # тестовый полигон
 def test():
+    from system.modules import module_test
+    mt_on = module_test()
+    if mt_on == 1:
+        print ("module test on".upper())
+ ################################# ТЕСТОВЫЙ ПОЛИГОН #############################
+        #from system.loot import new_gold_from_loot
 
-################################# ТЕСТОВЫЙ ПОЛИГОН #############################
-    #print ("test")
+        #new_gold_from_loot()
+        from system.modules import module_expended_statics
+        module_on_off = str(module_expended_statics())
+        if module_on_off == "1":
+            print ("module on".title())
+        elif module_on_off == "0":
+            print("module of".title)
+        else:
+            print ("not work")
 
-    #from system.loot import new_gold_from_loot
+    ################################################################################
 
-    #new_gold_from_loot()
-
-
-################################################################################
-
-    pass
+        pass

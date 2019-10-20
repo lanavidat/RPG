@@ -249,7 +249,7 @@ def cheat_mode():
     # включить чит-мод
     if go_cheat == '1':
         cheat_mode_on()
-        next = input("Cheat mode On ")
+        next = input(" ")
 
         if not next:
             admin_panel()
@@ -259,7 +259,7 @@ def cheat_mode():
     # Выключение читмод
     elif go_cheat == "2":
         cheat_mode_off()
-        next = input("Cheat mode OFF ")
+        next = input(" ")
 
         # в любом нажатии уходит в админку
         if not next:
@@ -282,43 +282,14 @@ def cheat_mode():
 
 #
 def cheat_mode_on():
-    cheat = open("system/hero/hero_char.py", "r")
-    t = cheat.readline()
-    y = eval(t)
-    y["agility"] = 100
-    y['strenght'] = 100
-    y['life'] = 100
-    cheat.close()
-    # запись полученного словаря(полночтью) в файл
-    cheat_mode = open("system/hero/hero_char.py", "w")
-    cheat_mode.write(str(y))
-    cheat_mode.close()
-
-# изменение показателя чита-мода
-    cheat = open("system/hero/about_hero.py", "r")
-    b = cheat.readline()
-    a = eval(b)
-    a["cheat_mode"] = 1
-    cheat.close()
-    # запись полученного словаря(полночтью) в файл
-    cheat_mode = open("system/hero/about_hero.py", "w")
-    cheat_mode.write(str(a))
-    cheat_mode.close()
+    from system.modules import module_cheat_mode_launcher
+    module_cheat_mode_launcher()
 
 # Выключение чит режима
 def cheat_mode_off():
-    import shutil
-    shutil.copy('system/hero/hero_char_replace.py', 'system/hero/hero_char.py')
+    from system.modules import module_cheat_mode_off
 
-    cheat = open("system/hero/about_hero.py", "r")
-    m = cheat.readline()
-    n = eval(m)
-    n["cheat_mode"] = 0
-    cheat.close()
-    # запись полученного словаря(полночтью) в файл
-    cheat_mode = open("system/hero/about_hero.py", "w")
-    cheat_mode.write(str(n))
-    cheat_mode.close()
+    module_cheat_mode_off()
 # --------------------------------- < Cheat Mode function ----------------------
 # ------------------------------------------------------------------------------
 # -------------------> Function of Module --------------------------------------
@@ -332,6 +303,10 @@ def check_module():
     module_gold_on = a["module_gold"]
     module_statistics_on = a['module_more_statistics']
     module_loot_on = a['module_loot']
+    module_expended_statics_on = a['module_expended_statics']
+    module_test_on = a['module_test']
+    cheat_mode_on = a['cheat_mode']
+
 
     # проверка на включение моделя денег
     def module_cash_switch():
@@ -354,6 +329,27 @@ def check_module():
         else:
             print("> Модуль лута не активен".upper())
 
+    # проверка на включенность модуля TEST place
+    def module_test_switch():
+        if module_test_on == 1:
+            print ("Модуль тестового полигона включен")
+        else:
+            print("> Модуль тестового полигона не активен".upper())
+
+    # проверка на включенность модуля TEST place
+    def module_expended_statics_switch():
+        if module_expended_statics_on == 1:
+            print ("Модуль дополнительной информации во время боя включен")
+        else:
+            print("> Модуль дополнительной информации во время боя не активен".upper())
+
+    # проверка на включенность модуля CHEAT 
+    def module_cheat_mode_switch():
+        if cheat_mode_on == 1:
+            print ("Модуль CHEAT включен")
+        else:
+            print("> Модуль CHEAT не активен".upper())
+
         module.close()
 
     os.system('cls||clear')
@@ -361,6 +357,9 @@ def check_module():
     module_cash_switch()
     module_loot_switch()
     module_statistics_switch()
+    module_test_switch()
+    module_expended_statics_switch()
+    module_cheat_mode_switch()
 
     i = input("\nПродолжим ...")
 
@@ -381,7 +380,7 @@ def on_off_module():
 
     print ("Включить модуль - 1. Выключить модуль - 0. \n\
 Не изменять значение - Enter. \n\
-Востановить стандартные значение - 8\n")
+Востановить стандартные значение - 8\n\n")
 
     def statistics():
         i = input ("Модуль 'Дополнительная статистика': ")
@@ -509,6 +508,83 @@ def on_off_module():
             input ("Не известная команда...")
             loot()
 
-    money()
+    
+
+    def expended_statics():
+        i = input ("Модуль дополнительной информации во время боя: ")
+        if i == "1":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_expended_statics"] = 1
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print ("Модуль 'дополнительной информации во время боя' активирован. Нужен перезапуск игры")
+            money()
+
+        elif i == "0":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_expended_statics"] = 0
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print ("Модуль 'дополнительной информации во время боя' выключен. Нужен перезапуск игры")
+            money()
+
+        elif not i:
+            input ("Не известная команда...")
+            money()
+        else:
+            input ("Не известная команда...")
+            money()
+
+    def test():
+        module_name = str('Модуль TEST')
+        i = input (module_name + ": ")
+
+        def next_module():
+            expended_statics()
+
+        if i == "1":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_test"] = 1
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print (module_name + " активирован. Нужен перезапуск игры")
+            next_module()
+
+        elif i == "0":
+            module = open("system/list_of_modules.py", "r")
+            b = module.readline()
+            a = eval(b)
+            a["module_test"] = 0
+            module.close()
+            # запись полученного словаря(полночтью) в файл
+            module = open("system/list_of_modules.py", "w")
+            module.write(str(a))
+            module.close()
+            print (module_name + " выключен. Нужен перезапуск игры")
+            next_module()
+
+        elif not i:
+            input ("Не известная команда...")
+            next_module()
+        else:
+            input ("Не известная команда...")
+            next_module()
+
+    test()
 # -------------------< Function of Module --------------------------------------
 # ------------------------------------------------------------------------------

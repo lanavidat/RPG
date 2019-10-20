@@ -25,6 +25,7 @@ def luck_now():
     from system.definition import luck_check
     luck_check()
 
+
 # Чтение и сохранение денег в файле
 def new_gold_to_wallet():
     from system.modules import module_cash_switch
@@ -54,6 +55,9 @@ def hero_mob_attack():
             random_mob_hp()
             global all_mob_hits, all_hero_hits
             from system.definition import short_log, line, test
+            from system.modules import module_expended_statics
+            module_expended_statics()
+            module_expended_statics = module_expended_statics()
 
             h = hero_name()
             max_hit = max_hero_hit()
@@ -63,6 +67,11 @@ def hero_mob_attack():
             max_mob_hit()
             m_max_ht = round(max_mob_hit(), 2)
             sw = 0
+
+            def module_expended_statics_check():
+                print ("Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits,2)))
+                    
+
 
             # Рамка во время боя
             def frame():
@@ -74,7 +83,8 @@ def hero_mob_attack():
                 line()
                 print ("Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, float(life()),"",int_mob_life, float(mob_hp())))
                 print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
-
+                if module_expended_statics == 1:
+                    module_expended_statics_check()
                 # короткий лог + тестовый полигон
                 test()
                 short_log()
@@ -99,19 +109,24 @@ def hero_mob_attack():
                     print ("New loot:{: <20} construct".format(""))
                     line()
 
-            # логи и характеристика персонажа
+            # логи и характеристика персонажа после боя
             def logs():
                 global all_mob_hits, all_hero_hits
-
+                
                 # характеристика полезная
                 hero_statistics()
+                
 
                 # разная статистика по персонажу, временная на текущий бой
-                print ("Rounds:{: <35} {}".format("",sw))
-                print ("Hero/Mob damages per round:{: <14} {}/{}".format("", round(all_hero_hits, 2), round(all_mob_hits,2)))
+                print ("Rounds:{}".format(sw),end=" ")
+                if module_expended_statics == 0:
+                    print (" | Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits,2)))
+                    
                 all_mob_hits = 0
                 all_hero_hits = 0
                 line()
+
+            
 
                 # Сюда записывать все временные логи, которые появились после боя
                 def write_logs():
