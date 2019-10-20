@@ -1,1 +1,1 @@
-{'module_gold': 0, 'module_wallet': 0, 'module_more_statistics': 1, 'module_loot': 0}
+{'module_gold': 1, 'module_wallet': 1, 'module_more_statistics': 1, 'module_loot': 1}

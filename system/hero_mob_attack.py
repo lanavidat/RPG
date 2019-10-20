@@ -11,7 +11,6 @@ from system.random_mob_hp import random_mob_hp, mob_hp
 from system.mob_hit import mob_hit, max_mob_hit
 from system.lets_go import hero_search, lets_go
 from system.hero_next_lvl import hero_next_lvl
-#from system.hero.hero_info import agility, strenght, life, lvl, next_lvl, hero_name, hero_died, luck, quantity_mob, gold
 from system.hero.hero_info import life, lvl, hero_name
 from system.loot import new_gold_from_loot
 from system.definition import cheat_mode_on_off
@@ -55,8 +54,6 @@ def hero_mob_attack():
             random_mob_hp()
             global all_mob_hits, all_hero_hits
             from system.definition import short_log, line, test
-            #from system.modules import module_cash_switch
-
 
             h = hero_name()
             max_hit = max_hero_hit()
@@ -96,8 +93,6 @@ def hero_mob_attack():
                 # новые деньги и запуск функции добавление денег в кошелек
                 if module_cash_switch == 1:
                     print ("New money {: <18} +{}".format("", new_gold_to_wallet()))
-                else:
-                    None
 
                 # новые вещи и функция добавленеи вещей в мешок
                 if module_loot == 1:
@@ -114,7 +109,6 @@ def hero_mob_attack():
                 # разная статистика по персонажу, временная на текущий бой
                 print ("Rounds:{: <35} {}".format("",sw))
                 print ("Hero/Mob damages per round:{: <14} {}/{}".format("", round(all_hero_hits, 2), round(all_mob_hits,2)))
-                #print ("Mob damages per round:{: <24} {}".format("", round(all_mob_hits,2)))
                 all_mob_hits = 0
                 all_hero_hits = 0
                 line()
@@ -202,7 +196,6 @@ def hero_mob_attack():
                         # head
                         line()
                         print ("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("",h.title(),"","","Victory!!",""))
-
 
                         loots()
                         logs()
