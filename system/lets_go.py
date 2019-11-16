@@ -9,7 +9,7 @@ def exit():
 
 # инициализайия поиска нового врага + шапка
 def hero_search():
-    from system.hello import line
+    from system.definition import line
     from system.hero_hit import max_hero_hit
     from system.hero.hero_info import agility, strenght, life, lvl, exper, next_lvl, hero_name
     from system.hero_mob_attack import hero_mob_attack
@@ -19,12 +19,11 @@ def hero_search():
 # функция отрисовки окна и выбора дальнейшего пути
 def lets_go():
     os.system('cls||clear')
-    from system.hello import line
     from system.hero.hero_info import hero_name
     from system.about_game import about_game
     from system.hero_stat import hero_stat
     from system.admin_panel import admin_panel
-    from system.definition import cheat_mode_on_off, test
+    from system.definition import cheat_mode_on_off, test, line
 
     test()
 

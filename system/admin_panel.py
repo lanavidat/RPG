@@ -1,20 +1,19 @@
 import os
+from system.structure.admin_panel.admin_menu.admin_menu_head import admin_menu_head
 
 # ----------------------> Main menu --------------------------------------------
 # админ меню
 def admin_panel():
 
-    # шапка и выбор
-    os.system('cls||clear')
-    print( '{0:~^80}' .format("~"))
-    do = " ADMIN PANEL "
-    print( '{0:!^80}' .format(do))
-    print("{0:~^80} \n\nНастройка Героя: 1\n\
+    # шапка 
+    admin_menu_head()
+
+    print("Настройка Героя: 1\n\
 Настройка Мира: 2\
 \n------------------\n\
 Cheate Mode: 3\
 \n------------------\n\
-Выйти в главное меню: 0".format("~"))
+Выйти в главное меню: 0")
 
     #запрос на действие в главном меню
     go = input("\nЧто сделать? ")
@@ -32,8 +31,8 @@ Cheate Mode: 3\
         cheat_mode()
 
     elif go == "4":
-        pass
-
+        from system.structure.admin_panel.admin_menu.admin_menu_main import admin_menu_main
+        admin_menu_main()
     elif go == "5":
         pass
 
@@ -63,16 +62,14 @@ Cheate Mode: 3\
 # -----------------------> Hero menu -------------------------------------------
 def configure_of_hero():
 
-    # шапка и выбор
-    os.system('cls||clear')
-    print( '{0:~^80}' .format("~"))
-    do = " ADMIN PANEL "
-    print( '{0:!^80}' .format(do))
-    print("{0:~^80} \n\nОбнулить характеристики героя: 1\nСброс класса персонажа: 2\n\
+    # шапка
+    admin_menu_head()
+
+    print("Обнулить характеристики героя: 1\nСброс класса персонажа: 2\n\
 Выбрать нового имени для ГГ: 3\nПросмотр текущих характеритик ГГ: 4\n\
 ------------------\n\
 Выйти в админку: 9\n\
-Выйти в главное меню: 0".format("~"))
+Выйти в главное меню: 0")
     #
     go = input("\nЧто сделать? ")
 

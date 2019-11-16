@@ -1,6 +1,8 @@
 # from system.definition import
 
 import random
+from tqdm import tqdm
+import time
 
 from system.hero_hit import hero_hit, max_hero_hit
 from system.hero.hero_quantity_mob import hero_quantity_mob
@@ -61,6 +63,9 @@ def short_log():
     line()
     from system.modules import module_expended_statics
     module_expended_statics_on = module_expended_statics()
+
+
+
     print ("Уровень и опыт:{}({}/{}) | ".format(lvl(),exper(),next_lvl()),end=" ")
     print ("Сила:{} | Ловкость:{} | Удача:{} ".format(strenght(), agility(), luck()))
     if module_expended_statics_on == 1:
@@ -77,6 +82,8 @@ def test():
  ################################# ТЕСТОВЫЙ ПОЛИГОН #############################
         #from system.loot import new_gold_from_loot
 
+
+ ################################# ТЕСТОВЫЙ ПОЛИГОН #############################
         #new_gold_from_loot()
         from system.modules import module_expended_statics
         module_on_off = str(module_expended_statics())

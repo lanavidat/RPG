@@ -65,7 +65,7 @@ def hero_mob_attack():
             hero_life = float(life())
             mob_hit()
             max_mob_hit()
-            m_max_ht = round(max_mob_hit(), 2)
+            #m_max_ht = round(max_mob_hit(), 2)
             sw = 0
 
             def module_expended_statics_check():
