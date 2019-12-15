@@ -84,16 +84,7 @@ def test():
 
 
  ################################# ТЕСТОВЫЙ ПОЛИГОН #############################
-        #new_gold_from_loot()
-        from system.modules import module_expended_statics
-        module_on_off = str(module_expended_statics())
-        if module_on_off == "1":
-            print ("module on".title())
-        elif module_on_off == "0":
-            print("module of".title)
-        else:
-            print ("not work")
 
-    ################################################################################
+################################################################################
 
-        pass
+        

@@ -13,7 +13,7 @@ module_test_on = a['module_test']
 module_cheat_mode_on = a['cheat_mode']
 
 
-# проверка на включение моделя денег
+# проверка на включение модуля денег
 def module_cash_switch():
     if module_wallet_on == 1 and module_gold_on == 1:
         module_on = 1

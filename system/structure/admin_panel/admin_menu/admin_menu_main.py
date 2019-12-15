@@ -1,11 +1,6 @@
 # from system.structure.admin_panel.admin_menu.admin_menu_main import
 
-
 def admin_menu_main():
-
-    # шапка и выбор
-    from system.structure.admin_panel.admin_menu.admin_menu_main.admin_menu_main_1 import menu_name_1
-    menu_name_1()
 
     print("Настройка Героя: 1\n\
 Настройка Мира: 2\
