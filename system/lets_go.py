@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import threading
 
 # функция выхода в консоль
 def exit():
@@ -16,6 +17,7 @@ def hero_search():
     hero_mob_attack()
     os.system('cls||clear')
 
+
 # функция отрисовки окна и выбора дальнейшего пути
 def lets_go():
     os.system('cls||clear')
@@ -26,6 +28,10 @@ def lets_go():
     from system.definition import cheat_mode_on_off, test, line
 
     test()
+
+
+
+
 
     # шапка и выбор пути
     h = hero_name()
@@ -68,3 +74,4 @@ def lets_go():
     else:
         print("Герой в замешательстве вертит головой\n")
         lets_go()
+

@@ -1,7 +1,6 @@
 #attack
 import random
 import os
-import threading
 import time
 
 from system.hero_hit import hero_hit, max_hero_hit
@@ -20,26 +19,6 @@ from system.definition import hero_statistics
 
 all_mob_hits = 0
 all_hero_hits = 0
-
-
-
-def timer():
-    import signal
-    def timeout_handler(signum, frame):
-        raise TimeoutError()
-    signal.signal(signal.SIGALRM, timeout_handler)
-    def input_timer(note, timeout):
-        signal.alarm(timeout)
-        try:
-            s = input("")
-        except TimeoutError:
-            hero_search()
-        finally:
-            signal.alarm(0)
-        return s
-    print("Ищем нового противника... Для остановки нажми ENTER")
-    input_timer(" ", 8)
-    lets_go()
 
 # Проверка на удачу в бою.
 def luck_now():
@@ -77,11 +56,9 @@ def hero_mob_attack():
             global all_mob_hits, all_hero_hits
             from system.definition import short_log, line, test
             from system.modules import module_expended_statics
-            import threading
             module_expended_statics()
             module_expended_statics = module_expended_statics()
 
-        
             h = hero_name()
             max_hit = max_hero_hit()
             mob_life_attack = float(mob_hp())
@@ -94,8 +71,10 @@ def hero_mob_attack():
             def module_expended_statics_check():
                 print ("Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits,2)))
                     
+
+
             # Рамка во время боя
-            def frame_game():
+            def frame():
                 # проверка на чит режим
                 cheat_mode_on_off()
 
@@ -106,15 +85,10 @@ def hero_mob_attack():
                 print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
                 if module_expended_statics == 1:
                     module_expended_statics_check()
-
                 # короткий лог + тестовый полигон
                 test()
                 short_log()
 
-            def frame():
-                frame = threading.Thread(target=frame_game)
-                frame.start()
-                
             # лут и деньги
             def loots():
                 # импорт модулей
@@ -142,6 +116,7 @@ def hero_mob_attack():
                 # характеристика полезная
                 hero_statistics()
                 
+
                 # разная статистика по персонажу, временная на текущий бой
                 print ("Rounds:{}".format(sw),end=" ")
                 if module_expended_statics == 0:
@@ -177,9 +152,10 @@ def hero_mob_attack():
                 if hero_random >= mob_random:
                     hero_hits = round(hero_hit(), 2)
                     luck_now()
+                    luck_check = luck_now()
 
                     # проверка на удачу в бою
-                    if luck_now == True:
+                    if luck_check == True:
 
                         # если удача улыбнулась удар max + random_hit
                         max_hit = max_hero_hit()
@@ -241,7 +217,22 @@ def hero_mob_attack():
                         test()
 
                         # запрос на новый бой, таймер
-                        timer()
+                        import signal
+                        def timeout_handler(signum, frame):
+                            raise TimeoutError()
+                        signal.signal(signal.SIGALRM, timeout_handler)
+                        def input_timer(note, timeout):
+                            signal.alarm(timeout)
+                            try:
+                                s = input("")
+                            except TimeoutError:
+                                hero_search()
+                            finally:
+                                signal.alarm(0)
+                            return s
+                        print("Ищем нового противника... Для остановки нажми ENTER")
+                        input_timer(" ", 8)
+                        lets_go()
 
                 # проверка на инициативу моба
                 if hero_random <= mob_random:
@@ -278,6 +269,21 @@ def hero_mob_attack():
                         hero_quantity_died()
 
                         # таймер на поиск нового моба
-                        timer()
+                        import signal
+                        def timeout_handler(signum, frame):
+                            raise TimeoutError()
+                        signal.signal(signal.SIGALRM, timeout_handler)
+                        def input_timer(note, timeout):
+                            signal.alarm(timeout)
+                            try:
+                                s = input("")
+                            except TimeoutError:
+                                hero_search()
+                            finally:
+                                signal.alarm(0)
+                            return s
+                        print("Ищем нового противника... Для остановки нажми ENTER")
+                        input_timer(" ", 8)
+                        lets_go()
 
         combat()

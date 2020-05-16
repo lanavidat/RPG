@@ -98,7 +98,7 @@ def module_cheat_mode_launcher():
     y['strenght'] = 100
     y['life'] = 100
     cheat.close()
-    # запись полученного словаря(полночтью) в файл
+    # запись полученного словаря(полноcтью) в файл
     cheat_mode = open("system/hero/hero_char.py", "w")
     cheat_mode.write(str(y))
     cheat_mode.close()
@@ -108,7 +108,7 @@ def module_cheat_mode_launcher():
     a = eval(b)
     a["cheat_mode"] = 1
     module.close()
-            # запись полученного словаря(полночтью) в файл
+            # запись полученного словаря(полноcтью) в файл
     module = open("system/list_of_modules.py", "w")
     module.write(str(a))
     module.close()
@@ -125,7 +125,7 @@ def module_cheat_mode_off():
     a = eval(b)
     a["cheat_mode"] = 0
     module.close()
-            # запись полученного словаря(полночтью) в файл
+            # запись полученного словаря(полноcтью) в файл
     module = open("system/list_of_modules.py", "w")
     module.write(str(a))
     module.close()

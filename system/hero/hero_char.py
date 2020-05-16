@@ -1,1 +1,1 @@
-{'agility': 1, 'strenght': 1, 'life': 10, 'luck': 1, 'exper': 0, 'lvl': 1, 'next_lvl': 10, 'quantity_mob': 0, 'gold': 0, 'hero_died': 8, 'total_round': 0, 'current_number_of_round': 0, 'all_hero_hits': 0, 'max_hero_hits': 0, 'all_mobs_hits' : 0}
+{'agility': 1, 'strenght': 1, 'life': 10, 'luck': 1, 'exper': 0.92, 'lvl': 1, 'next_lvl': 10, 'quantity_mob': 4, 'gold': 0.16, 'hero_died': 22, 'total_round': 0, 'current_number_of_round': 0, 'all_hero_hits': 0, 'max_hero_hits': 0, 'all_mobs_hits': 0}
