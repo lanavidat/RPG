@@ -5,7 +5,7 @@ exp = 0
 
 
 def exper():
-    from system.random_mob_hp import mob_hp, random_mob_hp
+    from system.random_mob_hp import mob_hp
     global exp
     exp = mob_hp()
     exp /=  25

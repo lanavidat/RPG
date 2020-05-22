@@ -1,7 +1,7 @@
-#attack
+# attack
 import random
 import os
-import threading
+# import threading
 import time
 
 from system.hero_hit import hero_hit, max_hero_hit
@@ -15,19 +15,20 @@ from system.hero_next_lvl import hero_next_lvl
 from system.hero.hero_info import life, lvl, hero_name
 from system.loot import new_gold_from_loot
 from system.definition import cheat_mode_on_off
-from system.exper import new_exp, exper
+# from system.exper import new_exp, exper
 from system.definition import hero_statistics
 
 all_mob_hits = 0
 all_hero_hits = 0
 
 
-
 def timer():
     import signal
     def timeout_handler(signum, frame):
         raise TimeoutError()
+
     signal.signal(signal.SIGALRM, timeout_handler)
+
     def input_timer(note, timeout):
         signal.alarm(timeout)
         try:
@@ -37,9 +38,11 @@ def timer():
         finally:
             signal.alarm(0)
         return s
+
     print("Ищем нового противника... Для остановки нажми ENTER")
     input_timer(" ", 8)
     lets_go()
+
 
 # Проверка на удачу в бою.
 def luck_now():
@@ -66,7 +69,8 @@ def new_gold_to_wallet():
         q_mob_write.write(str(a))
         q_mob_write.close()
 
-        return round(new_gold,2)
+        return round(new_gold, 2)
+
 
 # начало атаки на моба
 def hero_mob_attack():
@@ -81,29 +85,31 @@ def hero_mob_attack():
             module_expended_statics()
             module_expended_statics = module_expended_statics()
 
-        
             h = hero_name()
-            max_hit = max_hero_hit()
+            # max_hit = max_hero_hit()
             mob_life_attack = float(mob_hp())
             hero_life = float(life())
             mob_hit()
             max_mob_hit()
-            #m_max_ht = round(max_mob_hit(), 2)
+            # m_max_ht = round(max_mob_hit(), 2)
             sw = 0
 
             def module_expended_statics_check():
-                print ("Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits,2)))
-                    
+                print("Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits, 2)))
+
             # Рамка во время боя
             def frame_game():
                 # проверка на чит режим
                 cheat_mode_on_off()
 
                 line()
-                print ("{: <20}{} {: ^10}{}{: ^10} {}{: >20}".format("",h.title(),"",sw,"",mob_name().title(),""))
+                print("{: <20}{} {: ^10}{}{: ^10} {}{: >20}".format("", h.title(), "", sw, "", mob_name().title(), ""))
                 line()
-                print ("Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, float(life()),"",int_mob_life, float(mob_hp())))
-                print ("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits ,max_hero_hit(),"",mob_hits, max_mob_hit()))
+                print(
+                    "Health (now/max):        {}/{}{: ^20}{}/{}".format(int_hero_life, float(life()), "", int_mob_life,
+                                                                        float(mob_hp())))
+                print("Hit (now/max):           {}/{}{: ^20}{}/{}\n".format(hero_hits, max_hero_hit(), "", mob_hits,
+                                                                            max_mob_hit()))
                 if module_expended_statics == 1:
                     module_expended_statics_check()
 
@@ -114,7 +120,7 @@ def hero_mob_attack():
             def frame():
                 frame = threading.Thread(target=frame_game)
                 frame.start()
-                
+
             # лут и деньги
             def loots():
                 # импорт модулей
@@ -123,35 +129,33 @@ def hero_mob_attack():
                 module_cash_switch = module_cash_switch()
 
                 # новый опыт и запуск функции добавление опыта
-                print ("New experience {: <12}+{}".format("", float(exper())))
+                print("New experience {: <12}+{}".format("", float(exper())))
                 hero_next_lvl()
 
                 # новые деньги и запуск функции добавление денег в кошелек
                 if module_cash_switch == 1:
-                    print ("New money {: <18} +{}".format("", new_gold_to_wallet()))
+                    print("New money {: <18} +{}".format("", new_gold_to_wallet()))
 
                 # новые вещи и функция добавленеи вещей в мешок
                 if module_loot == 1:
-                    print ("New loot:{: <20} construct".format(""))
+                    print("New loot:{: <20} construct".format(""))
                     line()
 
             # логи и характеристика персонажа после боя
             def logs():
                 global all_mob_hits, all_hero_hits
-                
+
                 # характеристика полезная
                 hero_statistics()
-                
+
                 # разная статистика по персонажу, временная на текущий бой
-                print ("Rounds:{}".format(sw),end=" ")
+                print("Rounds:{}".format(sw), end=" ")
                 if module_expended_statics == 0:
-                    print (" | Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits,2)))
-                    
+                    print(" | Hero/Mob damages:{}/{}".format(round(all_hero_hits, 2), round(all_mob_hits, 2)))
+
                 all_mob_hits = 0
                 all_hero_hits = 0
                 line()
-
-            
 
                 # Сюда записывать все временные логи, которые появились после боя
                 def write_logs():
@@ -191,10 +195,12 @@ def hero_mob_attack():
                         int_hero_life = round(hero_life, 2)
                         all_hero_hits += max_hit
 
-                        os.system('cls||clear')
+                        os.system('clear')
 
                         line()
-                        print("{:^7}\nТебе улыбнулись сами боги! {} лупит со всей силы! КРИТ! {}НР.\n".format("",hero_name().title(),hero_hits))
+                        print("{:^7}\nТебе улыбнулись сами боги! {} лупит со всей силы! КРИТ! {}НР.\n".format("",
+                                                                                                              hero_name().title(),
+                                                                                                              hero_hits))
 
                         # рамка #####
                         frame()
@@ -207,12 +213,12 @@ def hero_mob_attack():
 
                         all_hero_hits += hero_hits
 
-                        os.system('cls||clear')
+                        os.system('clear')
 
                         line()
-                        #проверка на попадание героя по мобу
+                        # проверка на попадание героя по мобу
                         if hero_hits == 0.0:
-                            print ("\nГерой банально промазал. " + mob_name().title() + " ржет в стороне\n")
+                            print("\nГерой банально промазал. " + mob_name().title() + " ржет в стороне\n")
                         else:
                             print("\n{} бъет на {}НР\n".format(h.title(), hero_hits))
 
@@ -228,13 +234,13 @@ def hero_mob_attack():
                         hero_quantity_mob()
 
                         # Проверка на победу гг
-                        os.system('cls||clear')
+                        os.system('clear')
                         line()
-                        print ("\nГерой победил злобного монстра!{:<80}".format(" ").upper())
+                        print("\nГерой победил злобного монстра!{:<80}".format(" ").upper())
 
                         # head
                         line()
-                        print ("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("",h.title(),"","","Victory!!",""))
+                        print("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("", h.title(), "", "", "Victory!!", ""))
 
                         loots()
                         logs()
@@ -245,7 +251,7 @@ def hero_mob_attack():
 
                 # проверка на инициативу моба
                 if hero_random <= mob_random:
-                    os.system('cls||clear')
+                    os.system('clear')
                     mob_hits = round(mob_hit(), 2)
                     # запоминает удар моба
                     all_mob_hits += mob_hits
@@ -256,7 +262,7 @@ def hero_mob_attack():
 
                     # сообщение про удар моба
                     line()
-                    print("\n{: ^50}{} кусает героя на {}HP\n".format("",mob_name().title(),mob_hits))
+                    print("\n{: ^50}{} кусает героя на {}HP\n".format("", mob_name().title(), mob_hits))
 
                     # рамка + тестовый полигон
                     frame()
@@ -264,13 +270,14 @@ def hero_mob_attack():
 
                     # проверка на смерть героя
                     if int_hero_life <= 0:
-                        os.system('cls||clear')
+                        os.system('clear')
                         line()
                         print("\n               " + str(h.upper()) + " погиб не выдержав побоев.\n".upper())
 
                         # head
                         line()
-                        print ("{: <20}{} {: ^10}{: ^12}{} {: >20}".format("",h.title(),"","",mob_name().title(),""))
+                        print(
+                            "{: <20}{} {: ^10}{: ^12}{} {: >20}".format("", h.title(), "", "", mob_name().title(), ""))
 
                         logs()
 

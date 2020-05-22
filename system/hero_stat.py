@@ -1,11 +1,12 @@
 import os
 
+
 def hero_stat():
     os.system('cls||clear')
     do = " Характеристики игрока "
 
-    print( '{0:~^80}'.format("~"))
-    print( '{0:~^80}' .format(do.upper()))
+    print('{0:~^80}'.format("~"))
+    print('{0:~^80}'.format(do.upper()))
 
     from system.definition import hero_statistics
     hero_statistics()

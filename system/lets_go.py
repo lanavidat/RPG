@@ -1,26 +1,28 @@
 import os
 import sys
-import time
-import threading
+# import time
+# import threading
+
 
 # функция выхода в консоль
 def exit():
-    os.system('cls||clear')
+    os.system('clear')
     sys.exit()
+
 
 # инициализайия поиска нового врага + шапка
 def hero_search():
-    from system.definition import line
-    from system.hero_hit import max_hero_hit
-    from system.hero.hero_info import agility, strenght, life, lvl, exper, next_lvl, hero_name
+    # from system.definition import line
+    # from system.hero_hit import max_hero_hit
+    # from system.hero.hero_info import agility, strenght, life, lvl, exper, next_lvl, hero_name
     from system.hero_mob_attack import hero_mob_attack
     hero_mob_attack()
-    os.system('cls||clear')
+    os.system('clear')
 
 
 # функция отрисовки окна и выбора дальнейшего пути
 def lets_go():
-    os.system('cls||clear')
+    os.system('clear')
     from system.hero.hero_info import hero_name
     from system.about_game import about_game
     from system.hero_stat import hero_stat
@@ -29,23 +31,18 @@ def lets_go():
 
     test()
 
-
-
-
-
     # шапка и выбор пути
     h = hero_name()
     do = " Приветствуем, " + str(h) + "! Что будешь делать? "
     line()
 
-    print( '{0:~^80}'.format(do.upper()))
+    print('{0:~^80}'.format(do.upper()))
 
     # проверка на чит режим
     cheat_mode_on_off()
 
     print("{0:~^80} \n\nОхота на монстров: 1\nПросмотр своих статов: 2\nАдмин панель:\
  3\n-----------------\nВыйти в консоль: 9\nКуда я попал?: 0".format("~"))
-
 
     else_lets_go = input("\nТвое решение: ")
     lets_go_go = str(else_lets_go)
@@ -56,7 +53,7 @@ def lets_go():
 
     # выход в консоль
     elif lets_go_go == "9":
-        os.system('cls||clear')
+        os.system('clear')
         exit()
 
     # просмотр статистику по гг
@@ -74,4 +71,3 @@ def lets_go():
     else:
         print("Герой в замешательстве вертит головой\n")
         lets_go()
-
